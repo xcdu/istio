@@ -9,12 +9,14 @@ import scrapy
 class CrawldocsItem(scrapy.Item):
     """
     'page_indexer' is the sub_url of page url, which removes the common prefix.
+    'page_id' is the index number.
     """
     url = scrapy.Field()
     title = scrapy.Field()
     page_indexer = scrapy.Field()
-    raw = scrapy.Field()
-    header = scrapy.Field()
+    page_id = scrapy.Field()
+    body = scrapy.Field()
+    headline = scrapy.Field()
 
     """
     Each page has multiple slices of contents, which have an sequential index 
