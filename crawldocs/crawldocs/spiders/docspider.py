@@ -18,17 +18,28 @@ class DocspiderSpider(Spider):
   start_urls = [docs_url]
   parse_start_url = False
 
-  # save_path = "./.rawdata"
+  headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) '
+                  'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 '
+                  'Safari/537.36',
+    # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    # 'Accept-Language': 'en',
+    # "Accept-Encoding": "gzip, deflate",
+    # 'Content-Length': '0',
+    # "Connection": "keep-alive"
+  }
 
   def parse(self, response):
     if not self.parse_start_url:
       self.parse_start_url = True
       yield SplashRequest(response.url, args={"wait": "5"},
+                          headers=self.headers,
                           callback=self.parse_page)
     links = LinkExtractor(allow=()).extract_links(response)
     for link in links:
       if self.docs_url in link.url:
         yield SplashRequest(link.url, args={"wait": "5"},
+                            headers=self.headers,
                             callback=self.parse_page)
 
   def parse_page(self, response):
@@ -51,8 +62,8 @@ class DocspiderSpider(Spider):
     # self.logger.debug("page_indexer:{}".format(page_indexer))
 
     # parse body
-    body = response.body.decode("utf-8")
-    item["body"] = body
+    content = response.body.decode("utf-8")
+    item["content"] = content
     # self.logger.debug("raw:{}".format(raw))
 
     # parse header

@@ -14,16 +14,12 @@ from scrapy.selector import Selector
 import logging
 
 
-# class PageIdAllocPipeline:
-#   def __init__(self):
-#     self.index_number = 0
-#
-#   def process_item(self, item, spider):
-#     item["page_id"] = self.index_number
-#     self.index_number += 1
-#     logging.debug(
-#       "page_indexer:{} index:{}".format(item["page_indexer"], item["page_id"]))
-#     return item
+class IdIndexPagePipeline:
+  def process_item(self, item, spider):
+    selector = Selector(text=item["content"])
+    item["is_index"] = selector.xpath(
+      "boolean(//*[@class='section-index'])").get()
+    return item
 
 
 class SerializationPipeline:
