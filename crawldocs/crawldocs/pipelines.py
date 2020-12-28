@@ -5,21 +5,9 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
 import codecs
-import os
-import logging
 import json
-from scrapy.selector import Selector
-import logging
-
-
-class IdIndexPagePipeline:
-  def process_item(self, item, spider):
-    selector = Selector(text=item["content"])
-    item["is_index"] = selector.xpath(
-      "boolean(//*[@class='section-index'])").get()
-    return item
+import os
 
 
 class SerializationPipeline:

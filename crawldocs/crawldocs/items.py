@@ -17,7 +17,6 @@ class CrawldocsItem(scrapy.Item):
     page_id = scrapy.Field()
     content = scrapy.Field()
     headline = scrapy.Field()
-    is_index = scrapy.Field()
 
     """
     Each page has multiple slices of contents, which have an sequential index 

@@ -1,13 +1,10 @@
 import re
-import os
+
 from scrapy import Spider
-from crawldocs.items import CrawldocsItem
+from scrapy.linkextractors import LinkExtractor
 from scrapy_splash import SplashRequest
 
-from scrapy.http import Request
-from scrapy.selector import Selector
-from scrapy.linkextractors import LinkExtractor
-import logging
+from crawldocs.items import CrawldocsItem
 
 
 class DocspiderSpider(Spider):
