@@ -1,12 +1,43 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import pandas as pd
+from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
 
 
 class IstioManualInputAdaptor(object):
   def format(self, in_data):
     pass
 
-  def multilevel_format(self, in_data):
+  @staticmethod
+  def multilevel_format(in_data):
+    """
+    Convert manual into specific format:
+
+    dict:
+      "topic":    # split by detailed topic
+        "${indexer}": "text"
+        "${indexer}": "text"
+        ...
+
+      "indexer":  # split in indexer level
+        "${indexer}": "text"
+        "${indexer}": "text"
+        ...
+
+      1:          # split by the first substring of index
+        "${indexer}": "text"
+        "${indexer}": "text"
+        ...
+
+      2:          # split by the second substring of index
+        "${indexer}": "text"
+        "${indexer}": "text"
+        ...
+      ...
+
+    :param in_data:
+    :return:
+    """
     max_level = 0
     for page_indexer in in_data.keys():
       level_depth = len(page_indexer.split("$")) - 1
@@ -44,7 +75,32 @@ class IstioManualInputAdaptor(object):
     return hierarchy_data
 
 
+class SklearnInputAdapter(object):
+  @staticmethod
+  def format(in_data, fast_test=False):
+    preprocessor = PipelinePreprocessor()
+    # TODO(xcdu) added features here
+
+    preprocessor.set_features([])
+    data = preprocessor.process(in_data=in_data)
+    texts = list()
+    labels = list()
+    for indexer, contents in in_data.items():
+      for content in contents:
+        texts.append(content)
+        labels.append(indexer)
+
+    df = pd.DataFrame()
+    df["text"] = texts
+    df["label"] = labels
+
+
+class NeuralNetworkInputAdapter(object):
+  def format(self, text):
+    pass
+
+
 class RawInputAdapter(object):
-  def format(self, in_dat):
+  def format(self, in_data):
     # TODO(xcdu)
     pass

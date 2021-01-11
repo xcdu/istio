@@ -1,6 +1,7 @@
 # manually added
 .data
 .idea
+./bert
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

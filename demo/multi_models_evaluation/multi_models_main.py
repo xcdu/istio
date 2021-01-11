@@ -6,7 +6,6 @@ import pandas as pd
 import textblob
 # import xgboost
 from sklearn import ensemble
-from sklearn import linear_model
 from sklearn import metrics
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -14,8 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
 from manual import IstioManual
-from nlp_preprocess.input_adapter import IstioManualInputAdaptor
-from nlp_preprocess.preprocessor import PipelinePreprocessor
+from modules.nlp_preprocess.input_adapter import IstioManualInputAdaptor
+from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
 from parsedocs.data_helper import load_pages_from_dir
 
 in_path = "../../.data"
@@ -110,9 +109,6 @@ for key, data in data.items():
   tfidf_vect_ngram_chars.fit(df['text'])
   xtrain_tfidf_ngram_chars = tfidf_vect_ngram_chars.transform(train_x)
   xvalid_tfidf_ngram_chars = tfidf_vect_ngram_chars.transform(valid_x)
-
-
-
 
   df['char_count'] = df['text'].apply(len)
   df['word_count'] = df['text'].apply(lambda x: len(x.split()))

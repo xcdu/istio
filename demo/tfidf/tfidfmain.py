@@ -1,19 +1,15 @@
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.multiclass import OneVsRestClassifier
 from sklearn.multiclass import OneVsOneClassifier
 from sklearn.svm import LinearSVC
 
 from manual import IstioManual
 
 from parsedocs.data_helper import load_pages_from_dir
-from nlp_preprocess.input_adapter import IstioManualInputAdaptor
-from nlp_preprocess.preprocessor import PipelinePreprocessor
+from input_adapter import IstioManualInputAdaptor
+from preprocessor import PipelinePreprocessor
 
 
 def train_model(classifier, feature_vector_train, label, feature_vector_valid,

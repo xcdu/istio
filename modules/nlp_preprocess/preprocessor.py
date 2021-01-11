@@ -13,12 +13,11 @@ class PipelinePreprocessor(object):
     self.__features = features
 
   def process(self, in_data):
-    for label, texts in in_data.items():
-      for i in range(len(texts)):
-        texts[i] = self.batch_process(texts[i])
+    for label in in_data.keys():
+        in_data[label] = self.feature_process(in_data[label])
     return in_data
 
-  def batch_process(self, text):
+  def feature_process(self, texts):
     for feature in self.__features:
-      text = feature().apply(text)
-    return text
+      texts = feature().apply(texts)
+    return texts
