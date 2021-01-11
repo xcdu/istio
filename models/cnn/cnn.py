@@ -63,7 +63,7 @@ embedding_tokens = bert.embedding(all_text)
 #   embedding_matrix[word_index[token_]] = embedding
 
 for i in range(len(texts)):
-  texts[i] = " ".join(list(bert.embedding(texts[i]).keys()))
+  texts[i] = bert.tokenize(texts[i])
 
 df["text"] = texts
 
