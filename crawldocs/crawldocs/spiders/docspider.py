@@ -59,8 +59,8 @@ class DocspiderSpider(Spider):
     # self.logger.debug("page_indexer:{}".format(page_indexer))
 
     # parse body
-    content = response.body.decode("utf-8")
-    item["content"] = content
+    raw = response.body.decode("utf-8")
+    item["raw"] = raw
     # self.logger.debug("raw:{}".format(raw))
 
     # parse header

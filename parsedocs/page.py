@@ -6,8 +6,7 @@ import json
 class IstioPage(object):
   def __init__(self):
     """
-    content:
-      + begin_
+    contents: It is a list storing sliced text.
     """
     # Meta information
     self.url = str()

@@ -61,12 +61,9 @@ class IstioManual(object):
         contents_list = page.contents[
                         slice_positions[start]:slice_positions[end]]
         for c in contents_list:
-          print(c)
           contents += c
         if page.page_indexer not in self.manual:
           self.manual[page.page_indexer] = dict()
         if topic not in self.manual[page.page_indexer]:
           self.manual[page.page_indexer][topic] = list()
         self.manual[page.page_indexer][topic] += contents
-    # import json
-    # print(json.dumps(self.manual, indent=4))
