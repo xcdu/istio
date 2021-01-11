@@ -62,8 +62,10 @@ embedding_tokens = bert.embedding(all_text)
 # for token_, embedding in embedding_tokens.items():
 #   embedding_matrix[word_index[token_]] = embedding
 
-for i in range(len(df["text"])):
-  (df["text"])[i] = [key for key in bert.embedding((df["text"])[i])]
+for i in range(len(texts)):
+  texts[i] = " ".join(list(bert.embedding(texts[i]).keys()))
+
+df["text"] = texts
 
 train_x, valid_x, train_y, valid_y = train_test_split(df["text"], df["label"])
 
@@ -124,6 +126,8 @@ def create_cnn(word_index, embedding_matrix):
                 loss='sparse_categorical_crossentropy')
 
   return model
+
+
 #
 #
 classifier = create_cnn(word_index, embedding_matrix)
