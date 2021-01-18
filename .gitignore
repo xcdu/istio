@@ -4,6 +4,9 @@
 ./bert
 aclImdb
 */.tar.gz
+glove.6B.zip
+*/glove.6b
+*.pickle
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
