@@ -12,6 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
+from modules.nlp_preprocess.feature import SpacyFeature
 from manual import IstioManual
 from modules.nlp_preprocess.input_adapter import IstioManualInputAdaptor
 from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
@@ -39,6 +40,7 @@ in_pickle.close()
 for key, data in data.items():
   print("CURRENT LEVEL: {}".format(key))
   preprocessor = PipelinePreprocessor()
+  preprocessor.set_features([SpacyFeature])
   data = preprocessor.process(in_data=data)
 
   texts = list()

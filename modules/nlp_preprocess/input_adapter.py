@@ -67,7 +67,6 @@ class IstioManualInputAdaptor(object):
       for i in range(level_depth):
         label = "$".join(indexer_seq[1: i + 2])
         if label not in hierarchy_data[i + 1]:
-
           hierarchy_data[i + 1][label] = list()
         for topic, contents in topic_contents.items():
           hierarchy_data[i + 1][label] += contents
@@ -85,14 +84,15 @@ class SklearnInputAdapter(object):
     data = preprocessor.process(in_data=in_data)
     texts = list()
     labels = list()
-    for indexer, contents in in_data.items():
+    for indexer, contents in data.items():
       for content in contents:
         texts.append(content)
         labels.append(indexer)
-
     df = pd.DataFrame()
     df["text"] = texts
     df["label"] = labels
+
+    return df
 
 
 class NeuralNetworkInputAdapter(object):

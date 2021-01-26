@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from parsedocs.data_helper import load_raw_from_dir
-from parsedocs.graph import IstioGraph
+from pathlib import Path
 
-input_query = "How to start the application services"
 
-tfidfmodel = None
+def main():
+  """main function"""
 
-model = tfidfmodel
 
-output = model.query()
 
-print(output)
+if __name__ == '__main__':
+  main()
