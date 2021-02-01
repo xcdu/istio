@@ -8,9 +8,10 @@ glove.6B.zip
 */glove.6b
 *.pickle
 forum
-bert
-models
 .pyenv
+./models/test
+./models/textcnn
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
