@@ -5,7 +5,7 @@ import json
 import codecs
 from manual import IstioManual
 from page import IstioPage
-from default_configs import RAW_ISTIO_DIR, PARSED_DOCS_DIR
+from default_config import RAW_ISTIO_DIR, PARSED_DOCS_DIR
 
 
 def load_pages_from_dir(dir_path=RAW_ISTIO_DIR):

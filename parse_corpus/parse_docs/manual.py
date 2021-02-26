@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from parse.parse_docs.page_parser import IstioPageParser
+from parse_corpus.parse_docs.page_parser import IstioPageParser
 
 
 class IstioManual(object):
