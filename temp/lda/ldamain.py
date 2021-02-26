@@ -7,7 +7,7 @@ from docs_helper import load_raw_from_dir
 from parse_docs.graph import IstioGraph
 from nltk.corpus import stopwords
 
-from demo.lda.temp import clean_text
+from temp.lda.temp import clean_text
 
 from pprint import pprint as print
 

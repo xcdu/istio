@@ -12,10 +12,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
-from modules.nlp_preprocess.feature import SpacyFeature
+from components.nlp_preprocess.feature import SpacyFeature
 from manual import IstioManual
-from modules.nlp_preprocess.input_adapter import IstioManualInputAdaptor
-from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
+from components.nlp_preprocess.input_adapter import IstioManualInputAdaptor
+from components.nlp_preprocess.preprocessor import PipelinePreprocessor
 from docs_helper import load_pages_from_dir
 
 in_path = "../../.data"

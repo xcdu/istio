@@ -4,7 +4,7 @@ import spacy
 import os
 import keras_bert
 import codecs
-from modules.embedding.embedding_model import BertEmbeddingModel
+from components.embedding.embedding_model import BertEmbeddingModel
 from pathlib import Path
 
 

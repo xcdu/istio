@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pandas as pd
-from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
+from components.nlp_preprocess.preprocessor import PipelinePreprocessor
 
 
 class IstioManualInputAdaptor(object):

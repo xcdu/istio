@@ -4,10 +4,10 @@
 from manual import IstioManual
 
 from docs_helper import load_pages_from_dir
-from modules.nlp_preprocess.input_adapter import IstioManualInputAdaptor
-from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
-from modules.nlp_preprocess.feature import SpacyFeature
-from modules.nlp_preprocess.feature import BertFeature
+from components.nlp_preprocess.input_adapter import IstioManualInputAdaptor
+from components.nlp_preprocess.preprocessor import PipelinePreprocessor
+from components.nlp_preprocess.feature import SpacyFeature
+from components.nlp_preprocess.feature import BertFeature
 
 in_path = "../../../.data"
 
