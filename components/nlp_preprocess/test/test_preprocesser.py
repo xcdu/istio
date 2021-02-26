@@ -3,7 +3,7 @@
 
 from manual import IstioManual
 
-from parsedocs.data_helper import load_pages_from_dir
+from docs_helper import load_pages_from_dir
 from modules.nlp_preprocess.input_adapter import IstioManualInputAdaptor
 from modules.nlp_preprocess.preprocessor import PipelinePreprocessor
 from modules.nlp_preprocess.feature import SpacyFeature

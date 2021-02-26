@@ -56,7 +56,7 @@ class BertEmbeddingModel(object):
 
 
 if __name__ == '__main__':
-  in_path = "../../bert/uncased_L-12_H-768_A-12/"
+  in_path = "../../.bert/uncased_L-12_H-768_A-12/"
   sentence = "give me some guidance from istio"
   model = BertEmbeddingModel(in_path)
   print(model.tokenize(sentence))

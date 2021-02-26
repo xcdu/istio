@@ -1,16 +1,19 @@
 # manually added
 .data
 .idea
-./bert
+.bert
 aclImdb
 */.tar.gz
 glove.6B.zip
 */glove.6b
 *.pickle
-forum
+.raw_data/forum
 .pyenv
 ./models/test
 ./models/textcnn
+.raw_data
+.processed_data
+./temp
 
 
 # Byte-compiled / optimized / DLL files

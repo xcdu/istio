@@ -41,7 +41,7 @@ class RegexFeature(object):
 
 class BertFeature(BaseFeature):
   def __init__(self):
-    self.bert = Modules().get("bert")
+    self.bert = Modules().get(".bert")
 
   def apply(self, texts: list):
     for i in range(len(texts)):

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import json
-from parsedocs.page import IstioPage
-from parsedocs.page_parser import IstioPageParser
+from parse_docs.page import IstioPage
+from parse_docs.page_parser import IstioPageParser
 
-path = "../../.data/docs$tasks$traffic-management$fault-injection"
+path = "../../../.raw_data/istio_docs/docs$tasks$traffic-management$fault-injection"
 in_file = open(path, "r", encoding="utf-8")
 item = json.load(in_file)
 in_file.close()

@@ -21,7 +21,7 @@ class ConcreteSpacy(ConcreteBase):
 class ConcreteBertEmbeddingModel(ConcreteBase):
   def concrete(self):
     bert_model_path = os.path.join(Path(__file__).parent.absolute(),
-                                   "../bert/uncased_L-12_H-768_A-12/")
+                                   "../.bert/uncased_L-12_H-768_A-12/")
     return BertEmbeddingModel(bert_model_path)
 
 
@@ -29,7 +29,7 @@ class ModuleFactory(object):
   def __init__(self):
     self.__factories = {
       "spacy": ConcreteSpacy,
-      "bert": ConcreteBertEmbeddingModel
+      ".bert": ConcreteBertEmbeddingModel
     }
 
   def get_module(self, module_type: str):
