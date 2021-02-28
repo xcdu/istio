@@ -12,8 +12,10 @@ def test_fuzzy_parser():
     fuzzy_parser = IstioTemplateFuzzyParser()
     for index, row in raw_forum_df.iterrows():
         if row["template"] != np.nan:
-            template = str(row["template"])
-            fuzzy_parser.parse(template)
+            templates = str(row["template"])
+            templates = fuzzy_parser.parse(templates)
+            for t in templates:
+                print(t)
 
 
 if __name__ == '__main__':

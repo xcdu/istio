@@ -12,18 +12,17 @@ class IstioTemplatesParser(object):
 
 class IstioTemplateFuzzyParser(object):
     def __init__(self):
-        self.__api_version_tag = r"^apiVersion"
+        self.__api_version_tag = "apiVersion"
         self.__line_break_tag = '\n'
         self.__colon_tag = ":"
         self.__yaml_separator_tag = "---"
         self.__eof_tag = "EOF"
 
     def parse(self, raw_text: str) -> list:
-        self.parse_position_index(raw_text)
-        # parsed_template = list()
-        # for (begin, end) in self.parse_position_index(raw_text):
-        #     parsed_template.append(raw_text[begin, end])
-        # return parsed_template
+        parsed_templates = list()
+        for (begin, end) in self.parse_position_index(raw_text):
+            parsed_templates.append(raw_text[begin:end])
+        return parsed_templates
 
     def parse_position_index(self, raw_text) -> list:
         # coarse-grain sliced indexes
@@ -40,6 +39,7 @@ class IstioTemplateFuzzyParser(object):
         api_version_slices.append((api_version_positions[num_api_versions - 1][0], len(raw_text)))
 
         # fine-grain sliced end indexes
+        possible_position_indexes = []
         # try to update the end position
         for api_version_start, api_version_end in api_version_slices:
             sliced_text = raw_text[api_version_start:api_version_end]
@@ -73,5 +73,11 @@ class IstioTemplateFuzzyParser(object):
             slice_text_end_index = min(min_line_break_index, min_separator_index, min_eof_index)
 
             # find latest EOF
-            print(sliced_text[:slice_text_end_index])
-            c = input()
+            possible_template = (sliced_text[:slice_text_end_index])
+
+            try:
+                yaml.load(possible_template, Loader=yaml.FullLoader)
+                possible_position_indexes.append((api_version_start, api_version_start + slice_text_end_index))
+            except Exception as e:
+                continue
+        return possible_position_indexes
