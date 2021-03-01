@@ -15,6 +15,7 @@ glove.6B.zip
 .processed_data
 ./temp
 .python-version
+./logs
 
 
 
