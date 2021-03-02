@@ -18,6 +18,7 @@ def load_forum_corpus_from_dir(dir_path=RAW_FORUM_DIR, file_name="raw_forum.csv"
         "Comment(Raw Text+Template)": "comment",
         "Type Label": "annotation",
     }
+    dataframe = dataframe[select_and_rename_maps.keys()]
     dataframe = dataframe[list(select_and_rename_maps.keys())]
     dataframe = dataframe.rename(columns=select_and_rename_maps)
     return dataframe

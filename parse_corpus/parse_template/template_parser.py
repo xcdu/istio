@@ -76,8 +76,10 @@ class IstioTemplateFuzzyParser(object):
             possible_template = (sliced_text[:slice_text_end_index])
 
             try:
-                yaml.load(possible_template, Loader=yaml.FullLoader)
+                parsed_result = yaml.load(possible_template, Loader=yaml.FullLoader)
+                if type(parsed_result) is not dict:
+                    continue
                 possible_position_indexes.append((api_version_start, api_version_start + slice_text_end_index))
-            except Exception as e:
+            except Exception:
                 continue
         return possible_position_indexes

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
 import re
+import io
 
 """
 Template converter is to convert the format of yaml template.
@@ -141,3 +142,11 @@ def __check_int(s: str):
     elif s[0] in ['-', "+"]:
         return s[1].isdigit()
     return s.isdigit()
+
+
+def convert_from_dataframe_to_json(dataframe: pd.DataFrame):
+    return dataframe.to_json()
+
+
+def convert_from_json_to_dataframe(csv_data):
+    return pd.read_json(io.StringIO(csv_data))

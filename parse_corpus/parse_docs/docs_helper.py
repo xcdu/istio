@@ -3,8 +3,8 @@
 import os
 import json
 import codecs
-from manual import IstioManual
-from page import IstioPage
+from parse_corpus.parse_docs.manual import IstioManual
+from parse_corpus.parse_docs.page import IstioPage
 from default_config import RAW_ISTIO_DIR, PARSED_DOCS_DIR
 
 
@@ -18,51 +18,20 @@ def load_pages_from_dir(dir_path=RAW_ISTIO_DIR):
             in_file.close()
             page = IstioPage()
             page_list.append(page.load_from_dict(item))
+    if not page_list or len(page_list) == 0:
+        raise RuntimeError(f"No pages found in directory {dir_path}")
     return page_list
 
 
-def save_adjacency(
-        manual: IstioManual,
-        dir_path=PARSED_DOCS_DIR,
-        file_name="adjacency.json"):
-    # TODO(xcdu): fix serialization
-    save_file_path = os.path.join(dir_path, file_name)
-    with codecs.open(save_file_path, "w", encoding="utf-8") as save_file:
-        json.dump(manual.adjacency, save_file)
+def save_manual(manual: IstioManual, dir_path=PARSED_DOCS_DIR, filename="manual.json"):
+    save_path = os.path.join(dir_path, filename)
+    with codecs.open(save_path, "w", encoding="utf-8") as save_file:
+        save_file.write(manual.to_json())
 
 
-def save_terms(
-        manual: IstioManual,
-        dir_path=PARSED_DOCS_DIR,
-        file_name="terms.txt"):
-    save_file_path = os.path.join(dir_path, file_name)
-    with codecs.open(save_file_path, "w", encoding="utf-8") as save_file:
-        save_file.writelines([term + "\n" for term in manual.terms])
-
-
-def save_term_relationship(
-        manual,
-        dir_path=PARSED_DOCS_DIR,
-        file_name="term_relationship.txt"):
-    # TODO(xcdu): will finish this function when it is in use
-    pass
-
-
-def save_parsed_manual(
-        manual,
-        dir_path=PARSED_DOCS_DIR,
-        file_name="manual.json"):
-    save_file_path = os.path.join(dir_path, file_name)
-    with codecs.open(save_file_path, "w", encoding="utf-8") as save_file:
-        json.dump(manual.manual, save_file)
-    return
-
-
-def save_manual(manual, dir_path=PARSED_DOCS_DIR):
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
-    save_parsed_manual(manual, dir_path=dir_path)
-    # save_adjacency(manual, dir_path=dir_path)
-    save_terms(manual, dir_path=dir_path)
-    # save_term_relationship(manual, dir_path=dir_path)
-    return
+def load_manual(dir_path=PARSED_DOCS_DIR, filename="manual.json") -> IstioManual:
+    load_path = os.path.join(dir_path, filename)
+    with codecs.open(load_path, "r", encoding="utf-8") as load_file:
+        content = load_file.read()
+    manual = IstioManual()
+    return manual.from_json(content)
