@@ -57,12 +57,11 @@ test_ds = tf.keras.preprocessing.text_dataset_from_directory(
 
 test_ds = test_ds.cache().prefetch(buffer_size=AUTOTUNE)
 
-
 for text_batch, label_batch in train_ds.take(1):
-  for i in range(3):
-    print(f'Review: {text_batch.numpy()[i]}')
-    label = label_batch.numpy()[i]
-    print(f'Label : {label} ({class_names[label]})')
+    for i in range(3):
+        print(f'Review: {text_batch.numpy()[i]}')
+        label = label_batch.numpy()[i]
+        print(f'Label : {label} ({class_names[label]})')
 
 # Loading models from TensorFlow Hub
 
@@ -236,23 +235,23 @@ print(f'Pooled Outputs Values:{bert_results["pooled_output"][0, :12]}')
 print(f'Sequence Outputs Shape:{bert_results["sequence_output"].shape}')
 print(f'Sequence Outputs Values:{bert_results["sequence_output"][0, :12]}')
 
+
 # define your model
 
 def build_classifier_model():
-  text_input = tf.keras.layers.Input(shape=(), dtype=tf.string, name='text')
-  preprocessing_layer = hub.KerasLayer(tfhub_handle_preprocess, name='preprocessing')
-  encoder_inputs = preprocessing_layer(text_input)
-  encoder = hub.KerasLayer(tfhub_handle_encoder, trainable=True, name='BERT_encoder')
-  outputs = encoder(encoder_inputs)
-  net = outputs['pooled_output']
-  net = tf.keras.layers.Dropout(0.1)(net)
-  net = tf.keras.layers.Dense(1, activation=None, name='classifier')(net)
-  return tf.keras.Model(text_input, net)
+    text_input = tf.keras.layers.Input(shape=(), dtype=tf.string, name='text')
+    preprocessing_layer = hub.KerasLayer(tfhub_handle_preprocess, name='preprocessing')
+    encoder_inputs = preprocessing_layer(text_input)
+    encoder = hub.KerasLayer(tfhub_handle_encoder, trainable=True, name='BERT_encoder')
+    outputs = encoder(encoder_inputs)
+    net = outputs['pooled_output']
+    net = tf.keras.layers.Dropout(0.1)(net)
+    net = tf.keras.layers.Dense(1, activation=None, name='classifier')(net)
+    return tf.keras.Model(text_input, net)
+
 
 classifier_model = build_classifier_model()
 bert_raw_result = classifier_model(tf.constant(text_test))
 print(tf.sigmoid(bert_raw_result))
 
 tf.keras.utils.plot_model(classifier_model)
-
-

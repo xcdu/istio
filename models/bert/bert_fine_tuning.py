@@ -7,6 +7,7 @@ import tensorflow as tf
 
 import tensorflow_hub as hub
 import tensorflow_datasets as tfds
+
 tfds.disable_progress_bar()
 
 from official.modeling import tf_utils
@@ -24,10 +25,10 @@ import official.nlp.modeling.losses
 import official.nlp.modeling.models
 import official.nlp.modeling.networks
 
-gs_folder_bert = "../../bert/uncased_L-12_H-768_A-12/"
+gs_folder_bert = "../../.bert/uncased_L-12_H-768_A-12/"
 print(tf.io.gfile.listdir(gs_folder_bert))
 
-glue, info = tfds.load('glue/mrpc', with_info=True,
+glue, info = tfds.load('glue/cola', with_info=True,
                        # It's small, load the whole dataset
                        batch_size=-1)
 
@@ -35,16 +36,15 @@ print(list(glue.keys()))
 print(info.features)
 print(info.features['label'].names)
 
-
 glue_train = glue['train']
 
 for key, value in glue_train.items():
-  print(f"{key:9s}: {value[0].numpy()}")
+    print(f"{key:9s}: {value[0].numpy()}")
 
 # Set up tokenizer to generate Tensorflow dataset
 tokenizer = bert.tokenization.FullTokenizer(
     vocab_file=os.path.join(gs_folder_bert, "vocab.txt"),
-     do_lower_case=True)
+    do_lower_case=True)
 
 print("Vocab size:", len(tokenizer.vocab))
 
@@ -55,17 +55,19 @@ print(ids)
 
 print(tokenizer.convert_tokens_to_ids(['[CLS]', '[SEP]']))
 
+
 def encode_sentence(s):
-   tokens = list(tokenizer.tokenize(s.numpy()))
-   tokens.append('[SEP]')
-   return tokenizer.convert_tokens_to_ids(tokens)
+    tokens = list(tokenizer.tokenize(s.numpy()))
+    tokens.append('[SEP]')
+    return tokenizer.convert_tokens_to_ids(tokens)
+
 
 sentence1 = tf.ragged.constant([
     encode_sentence(s) for s in glue_train["sentence1"]])
 sentence2 = tf.ragged.constant([
     encode_sentence(s) for s in glue_train["sentence2"]])
 
-cls = [tokenizer.convert_tokens_to_ids(['[CLS]'])]*sentence1.shape[0]
+cls = [tokenizer.convert_tokens_to_ids(['[CLS]'])] * sentence1.shape[0]
 input_word_ids = tf.concat([cls, sentence1, sentence2], axis=-1)
 _ = plt.pcolormesh(input_word_ids.to_tensor())
 
@@ -115,6 +117,7 @@ def bert_encode(glue_dict, tokenizer):
 
     return inputs
 
+
 glue_train = bert_encode(glue['train'], tokenizer)
 glue_train_labels = glue['train']['label']
 
@@ -122,10 +125,10 @@ glue_validation = bert_encode(glue['validation'], tokenizer)
 glue_validation_labels = glue['validation']['label']
 
 glue_test = bert_encode(glue['test'], tokenizer)
-glue_test_labels  = glue['test']['label']
+glue_test_labels = glue['test']['label']
 
 for key, value in glue_train.items():
-  print(f'{key:15s} shape: {value.shape}')
+    print(f'{key:15s} shape: {value.shape}')
 
 print(f'glue_train_labels shape: {glue_train_labels.shape}')
 
@@ -137,7 +140,6 @@ config_dict = json.loads(tf.io.gfile.GFile(bert_config_file).read())
 bert_config = bert.configs.BertConfig.from_dict(config_dict)
 
 print(config_dict)
-
 
 bert_classifier, bert_encoder = bert.bert_models.classifier_model(
     bert_config, num_labels=2)
@@ -155,7 +157,6 @@ tf.keras.utils.plot_model(bert_encoder, show_shapes=True, dpi=48)
 checkpoint = tf.train.Checkpoint(model=bert_encoder)
 checkpoint.restore(
     os.path.join(gs_folder_bert, 'bert_model.ckpt')).assert_consumed()
-
 
 # Set up epochs and steps
 epochs = 3
@@ -182,18 +183,17 @@ bert_classifier.compile(
     metrics=metrics)
 
 bert_classifier.fit(
-      glue_train, glue_train_labels,
-      validation_data=(glue_validation, glue_validation_labels),
-      batch_size=32,
-      epochs=epochs)
-
+    glue_train, glue_train_labels,
+    validation_data=(glue_validation, glue_validation_labels),
+    batch_size=32,
+    epochs=epochs)
 
 my_examples = bert_encode(
-    glue_dict = {
-        'sentence1':[
+    glue_dict={
+        'sentence1': [
             'The rain in Spain falls mainly on the plain.',
             'Look I fine tuned BERT.'],
-        'sentence2':[
+        'sentence2': [
             'It mostly rains on the flat lands of Spain.',
             'Is it working? This does not match.']
     },
@@ -204,10 +204,9 @@ result = bert_classifier(my_examples, training=False)
 result = tf.argmax(result).numpy()
 print(result)
 
-
 print(np.array(info.features['label'].names)[result])
 
-export_dir='./saved_model'
+export_dir = './saved_model'
 tf.saved_model.save(bert_classifier, export_dir=export_dir)
 
 reloaded = tf.saved_model.load(export_dir)
@@ -221,15 +220,3 @@ original_result = bert_classifier(my_examples, training=False)
 print(original_result.numpy())
 print()
 print(reloaded_result.numpy())
-
-
-
-
-
-
-
-
-
-
-
-

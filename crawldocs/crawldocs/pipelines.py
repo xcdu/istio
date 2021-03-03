@@ -12,7 +12,7 @@ import os
 
 class SerializationPipeline:
   def __init__(self):
-    self.save_dir = "../.data"
+    self.save_dir = "../.raw_data/istio_docs"
     if not os.path.exists(self.save_dir):
       os.makedirs(os.path.abspath(self.save_dir))
 
