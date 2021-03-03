@@ -1,16 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from models.seq2seq.seq2seq_model import Seq2Seq
+from __future__ import print_function
 
-from keras.losses import SparseCategoricalCrossentropy
-from keras.preprocessing.sequence import pad_sequences
-import re
-import numpy as np
-
-from preprocess_corpus.preprocess_forum import load_forum_dataframe
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
 from models.seq2seq.data_preparation import prepare_input
+import numpy as np
+import re
 
 df = prepare_input()
 texts = df["processed_text"]
@@ -22,6 +18,8 @@ template_chars = set()
 input_texts = []
 for text in texts:
     input_text = " ".join(text)
+    input_text = input_text.replace("\t", " ")
+    input_text = input_text.replace("\n", " ")
     input_texts.append(input_text)
     for text_c in input_text:
         text_chars.add(text_c)
@@ -30,6 +28,9 @@ input_templates = []
 for template in templates:
     input_template = " ".join(template)
     input_template = re.sub(r"<NUM_\d+>", "<NUM>", input_template)
+    input_template = input_template.replace('\t', ' ')
+    input_template = input_template.replace('\n', ' ')
+    input_template = '\t' + input_template + '\n'
     input_templates.append(input_template)
     for template_c in input_template:
         template_chars.add(template_c)
@@ -62,13 +63,14 @@ for i, (input_text, target_text) in enumerate(zip(input_texts, input_templates))
         decoder_target_data[i, t - 1, target_token_index[c]] = 1.
         decoder_input_data[i, t + 1:, target_token_index[' ']] = 1.
         decoder_target_data[i, t:, target_token_index[' ']] = 1.
+
 print(encoder_input_data.shape)
 print(decoder_input_data.shape)
 print(decoder_target_data.shape)
 
 latent_dim = 64
 batch_size = 10
-epochs = 10
+epochs = 2
 
 # Define an input sequence and process it.
 encoder_inputs = Input(shape=(None, num_encoder_tokens))
@@ -98,12 +100,18 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           batch_size=batch_size,
           epochs=epochs,
           validation_split=0.2)
+# Save model
+model.save("seq2seq.model.2")
 
-model.save("seq2seq.model")
+# Next: inference mode (sampling).
+# Here's the drill:
+# 1) encode input and retrieve initial decoder state
+# 2) run one step of decoder with this initial state
+# and a "start of sequence" token as target.
+# Output will be the next target token
+# 3) Repeat with the current target token and current states
 
-# todo(xcdu): start here
-model.load_weights("seq2seq.model")
-
+# Define sampling models
 encoder_model = Model(encoder_inputs, encoder_states)
 
 decoder_state_input_h = Input(shape=(latent_dim,))
@@ -117,41 +125,57 @@ decoder_model = Model(
     [decoder_inputs] + decoder_states_inputs,
     [decoder_outputs] + decoder_states)
 
+# Reverse-lookup token index to decode sequences back to
+# something readable.
+reverse_input_char_index = dict(
+    (i, char) for char, i in input_token_index.items())
+reverse_target_char_index = dict(
+    (i, char) for char, i in target_token_index.items())
 
-# def decode_sequence(input_seq):
-#     # Encode the input as state vectors.
-#     states_value = encoder_model.predict(input_seq)
-#
-#     # Generate empty target sequence of length 1.
-#     target_seq = np.zeros((1, 1, num_decoder_tokens))
-#     # Populate the first character of target sequence with the start character.
-#     target_seq[0, 0, target_token_index['\t']] = 1.
-#
-#     # Sampling loop for a batch of sequences
-#     # (to simplify, here we assume a batch of size 1).
-#     stop_condition = False
-#     decoded_sentence = ''
-#     while not stop_condition:
-#         output_tokens, h, c = decoder_model.predict(
-#             [target_seq] + states_value)
-#
-#         # Sample a token
-#         sampled_token_index = np.argmax(output_tokens[0, -1, :])
-#         sampled_char = reverse_target_char_index[sampled_token_index]
-#         decoded_sentence += sampled_char
-#
-#         # Exit condition: either hit max length
-#         # or find stop character.
-#         if (sampled_char == '\n' or
-#                 len(decoded_sentence) > max_decoder_seq_length):
-#             stop_condition = True
-#
-#         # Update the target sequence (of length 1).
-#         target_seq = np.zeros((1, 1, num_decoder_tokens))
-#         target_seq[0, 0, sampled_token_index] = 1.
-#
-#         # Update states
-#         states_value = [h, c]
-#
-#     return decoded_sentence
 
+def decode_sequence(input_seq):
+    # Encode the input as state vectors.
+    states_value = encoder_model.predict(input_seq)
+
+    # Generate empty target sequence of length 1.
+    target_seq = np.zeros((1, 1, num_decoder_tokens))
+    # Populate the first character of target sequence with the start character.
+    target_seq[0, 0, target_token_index['\t']] = 1.
+
+    # Sampling loop for a batch of sequences
+    # (to simplify, here we assume a batch of size 1).
+    stop_condition = False
+    decoded_sentence = ''
+    while not stop_condition:
+        output_tokens, h, c = decoder_model.predict(
+            [target_seq] + states_value)
+
+        # Sample a token
+        sampled_token_index = np.argmax(output_tokens[0, -1, :])
+        sampled_char = reverse_target_char_index[sampled_token_index]
+        decoded_sentence += sampled_char
+
+        # Exit condition: either hit max length
+        # or find stop character.
+        if (sampled_char == '\n' or
+                len(decoded_sentence) > max_decoder_seq_length):
+            stop_condition = True
+
+        # Update the target sequence (of length 1).
+        target_seq = np.zeros((1, 1, num_decoder_tokens))
+        target_seq[0, 0, sampled_token_index] = 1.
+
+        # Update states
+        states_value = [h, c]
+
+    return decoded_sentence
+
+
+for seq_index in range(100):
+    # Take one sequence (part of the training test)
+    # for trying out decoding.
+    input_seq = encoder_input_data[seq_index: seq_index + 1]
+    decoded_sentence = decode_sequence(input_seq)
+    print('-')
+    print('Input sentence:', input_texts[seq_index])
+    print('Decoded sentence:', decoded_sentence)
