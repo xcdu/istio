@@ -101,6 +101,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
 
 model.save("seq2seq.model")
 
+# todo(xcdu): start here
 model.load_weights("seq2seq.model")
 
 encoder_model = Model(encoder_inputs, encoder_states)
@@ -153,3 +154,4 @@ decoder_model = Model(
 #         states_value = [h, c]
 #
 #     return decoded_sentence
+
