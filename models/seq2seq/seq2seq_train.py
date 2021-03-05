@@ -10,9 +10,9 @@ import numpy as np
 from preprocess_corpus.preprocess_forum import load_forum_dataframe
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
-from models.seq2seq.data_preparation import prepare_input
+from models.seq2seq.seq2seq_data_preparation import prepare_train_input
 
-df = prepare_input()
+df = prepare_train_input()
 texts = df["processed_text"]
 templates = df["processed_template"]
 

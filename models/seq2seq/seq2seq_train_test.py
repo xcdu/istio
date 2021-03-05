@@ -4,70 +4,25 @@ from __future__ import print_function
 
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
-from models.seq2seq.data_preparation import prepare_input
+from models.seq2seq.seq2seq_data_preparation import load_texts_templates_dataset, format_input_text, \
+    format_input_template, calculate_parameters, prepare_encoder_decoder_data
 import numpy as np
 import re
 
-df = prepare_input()
-texts = df["processed_text"]
-templates = df["processed_template"]
+texts, templates = load_texts_templates_dataset()
 
-text_chars = set()
-template_chars = set()
+input_texts, text_chars, input_token_index = format_input_text(texts)
 
-input_texts = []
-for text in texts:
-    input_text = " ".join(text)
-    input_text = input_text.replace("\t", " ")
-    input_text = input_text.replace("\n", " ")
-    input_texts.append(input_text)
-    for text_c in input_text:
-        text_chars.add(text_c)
+input_templates, template_chars, target_token_index = format_input_template(templates)
 
-input_templates = []
-for template in templates:
-    input_template = " ".join(template)
-    input_template = re.sub(r"<NUM_\d+>", "<NUM>", input_template)
-    input_template = input_template.replace('\t', ' ')
-    input_template = input_template.replace('\n', ' ')
-    input_template = '\t' + input_template + '\n'
-    input_templates.append(input_template)
-    for template_c in input_template:
-        template_chars.add(template_c)
+num_sample, num_encoder_tokens, num_decoder_tokens, max_encoder_seq_length, max_decoder_seq_length = \
+    calculate_parameters(input_texts, text_chars, input_templates, template_chars)
 
-print(f"len text chars: {len(text_chars)} len template chars: {len(template_chars)}")
-num_encoder_tokens = len(text_chars)
-num_decoder_tokens = len(template_chars)
+encoder_input_data, decoder_input_data, decoder_target_data = prepare_encoder_decoder_data(
+    input_texts, input_templates, input_token_index, target_token_index, num_encoder_tokens, max_encoder_seq_length,
+    num_decoder_tokens, max_decoder_seq_length)
 
-max_text_seq_len = max([len(t) for t in input_texts])
-max_encoder_seq_length = max_text_seq_len
-max_temp_seq_len = max([len(t) for t in input_templates])
-max_decoder_seq_length = max_temp_seq_len
-print(f"len max text: {max_text_seq_len} len max temp: {max_temp_seq_len}")
-
-num_samples = len(input_texts)
-print(f"num samples: {num_samples}")
-
-input_token_index = dict([(c, i) for i, c in enumerate(text_chars)])
-target_token_index = dict([c, i] for i, c in enumerate(template_chars))
-
-encoder_input_data = np.zeros((len(input_texts), max_encoder_seq_length, num_encoder_tokens), dtype="float32")
-decoder_input_data = np.zeros((len(input_texts), max_decoder_seq_length, num_decoder_tokens), dtype="float32")
-decoder_target_data = np.zeros((len(input_texts), max_decoder_seq_length, num_decoder_tokens), dtype="float32")
-
-for i, (input_text, target_text) in enumerate(zip(input_texts, input_templates)):
-    for t, c in enumerate(input_text):
-        encoder_input_data[i, t, input_token_index[c]] = 1.
-        encoder_input_data[i, t + 1:, input_token_index[' ']] = 1.
-    for t, c in enumerate(target_text):
-        decoder_target_data[i, t - 1, target_token_index[c]] = 1.
-        decoder_input_data[i, t + 1:, target_token_index[' ']] = 1.
-        decoder_target_data[i, t:, target_token_index[' ']] = 1.
-
-print(encoder_input_data.shape)
-print(decoder_input_data.shape)
-print(decoder_target_data.shape)
-
+# Hyper-parameters
 latent_dim = 64
 batch_size = 10
 epochs = 2
