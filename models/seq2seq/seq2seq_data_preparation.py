@@ -99,7 +99,3 @@ def prepare_encoder_decoder_data(
 #     return input_texts, input_templates, text_chars, template_chars, input_token_index, target_token_index, num_sample,\
 #            num_encoder_tokens, num_decoder_tokens, max_encoder_seq_length, max_decoder_seq_length, encoder_input_data,\
 #            decoder_input_data, decoder_target_data
-
-
-if __name__ == '__main__':
-    prepare_train_input()
