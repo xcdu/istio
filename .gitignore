@@ -10,7 +10,6 @@ glove.6B.zip
 .pyenv
 ./models/test
 ./models/textcnn
-.raw_data
 ./temp
 .python-version
 ./logs
