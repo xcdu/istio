@@ -1,0 +1,105 @@
+
+
+
+
+Follow this guide to install the Istio control plane on 
+ (the
+
+) and configure 
+ (the
+
+) to use the control plane in
+
+. Cluster 
+ is on the 
+ network, while 
+
+is on the 
+ network. This means there is no direct connectivity
+between pods across cluster boundaries.
+Before proceeding, be sure to complete the steps under
+
+.
+In this configuration, cluster 
+ will observe the API Servers in
+both clusters for endpoints. In this way, the control plane will be able to
+provide service discovery for workloads in both clusters.
+Service workloads across cluster boundaries communicate indirectly, via
+dedicated gateways for 
+
+traffic. The gateway in each cluster must be reachable from the other cluster.
+Services in 
+ will reach the control plane in 
+ via the
+same east-west gateway.
+Today, the remote profile will install an istiod server in the remote
+cluster which will be used for CA and webhook injection for workloads
+in that cluster. Service discovery, however, will be directed to the
+control plane in the primary cluster.
+Future releases will remove the need for having an istiod in the
+remote cluster altogether. Stay tuned!
+If the istio-system namespace is already created, we need to set the cluster’s network there:
+Create the Istio configuration for 
+:
+Apply the configuration to 
+:
+Install a gateway in 
+ that is dedicated to east-west traffic. By
+default, this gateway will be public on the Internet. Production systems may
+require additional access restrictions (e.g. via firewall rules) to prevent
+external attacks. Check with your cloud vendor to see what options are
+available.
+Wait for the east-west gateway to be assigned an external IP address:
+Before we can install on 
+, we need to first expose the control plane in
+
+ so that services in 
+ will be able to access service discovery:
+Since the clusters are on separate networks, we also need to expose all user
+services (*.local) on the east-west gateway in both clusters. While this
+gateway is public on the Internet, services behind it can only be accessed by
+services with a trusted mTLS certificate and workload ID, just as if they were
+on the same network.
+If the istio-system namespace is already created, we need to set the cluster’s network there:
+Before we can configure the remote cluster, we first have to give the control
+plane in 
+ access to the API Server in 
+. This will do the
+following:
+Enables the control plane to authenticate connection requests from
+workloads running in 
+. Without API Server access, the control
+plane will reject the requests.
+Enables discovery of service endpoints running in 
+.
+To provide API Server access to 
+, we generate a remote secret and
+apply it to 
+:
+Save the address of 
+’s east-west gateway.
+Now create a remote configuration on 
+.
+Apply the configuration to 
+:
+As we did with 
+ above, install a gateway in 
+ that is dedicated
+to east-west traffic and expose user services.
+Wait for the east-west gateway to be assigned an external IP address:
+As we did with 
+ above, expose services via the east-west gateway.
+ You successfully installed an Istio mesh across primary
+and remote clusters on different networks!
+You can now 
+.
+Initial steps before installing Istio on multiple clusters.
+Install an Istio mesh across multiple primary clusters.
+Install an Istio mesh across multiple primary clusters on different networks.
+Install an Istio mesh across primary and remote clusters.
+Verify that Istio has been installed properly on multiple clusters.
+Workload Local DNS resolution to simplify VM integration, multicluster, and more.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: November 11, 2020

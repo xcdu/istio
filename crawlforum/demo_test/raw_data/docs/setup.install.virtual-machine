@@ -1,0 +1,69 @@
+
+
+
+
+Follow this guide to deploy Istio and connect a virtual machine to it.
+Set the environment variables 
+, 
+ , 
+,
+and 
+
+(e.g., 
+):
+Create the working directory:
+Install Istio and expose the control plane so that your virtual machine can access it.
+Install Istio.
+Deploy the east-west gateway:
+Expose the control plane using the provided sample configuration:
+Create the namespace that will host the virtual machine:
+Create a serviceaccount for the virtual machine:
+Create a template 
+ for the VM(s)
+Use the 
+ command to generate:
+Run the following commands on the virtual machine you want to add to the Istio mesh:
+Securely transfer the files from 
+
+to the virtual machine. How you choose to securely transfer those files should be done with consideration for
+your information security policies. For convenience in this guide, transfer all of the required files to 
+ in the virtual machine.
+Install the root certificate at 
+:
+Install the token at 
+:
+Install the package containing the Istio virtual machine integration runtime:
+Install 
+ within the directory 
+:
+Install the 
+ to 
+:
+Add the istiod host to 
+:
+Transfer ownership of the files in 
+ and 
+ to the Istio proxy:
+Start the Istio agent:
+Check the log in 
+. You should see entries similar to the following:
+Create a Namespace to deploy a Pod-based Service:
+Deploy the 
+ Service:
+Send requests from your Virtual Machine to the Service:
+Stop Istio on the virtual machine:
+Then, remove the Istio-sidecar package:
+To uninstall Istio, run the following command:
+The control plane namespace (e.g., 
+) is not removed by default.
+If no longer needed, use the following command to remove it:
+Learn how to add a service running on a virtual machine to your multi-network Istio mesh.
+Run the Bookinfo application with a MySQL service running on a virtual machine within your mesh.
+Learn how to add a service running on a virtual machine to your single-network Istio mesh.
+Provision and manage DNS certificates in Istio.
+A more secure way to manage Istio webhooks.
+De-mystify how Istio manages to plugin its data-plane components into an existing deployment.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: December 15, 2020

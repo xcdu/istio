@@ -1,0 +1,78 @@
+
+
+
+
+Follow this guide to install the Istio control plane on both 
+ and
+
+, making each a 
+. Cluster
+
+ is on the 
+ network, while 
+ is on the
+
+ network. This means there is no direct connectivity between pods
+across cluster boundaries.
+Before proceeding, be sure to complete the steps under
+
+.
+In this configuration, both 
+ and 
+ observe the API Servers
+in each cluster for endpoints.
+Service workloads across cluster boundaries communicate indirectly, via
+dedicated gateways for 
+
+traffic. The gateway in each cluster must be reachable from the other cluster.
+If the istio-system namespace is already created, we need to set the cluster’s network there:
+Create the Istio configuration for 
+:
+Apply the configuration to 
+:
+Install a gateway in 
+ that is dedicated to
+
+ traffic. By
+default, this gateway will be public on the Internet. Production systems may
+require additional access restrictions (e.g. via firewall rules) to prevent
+external attacks. Check with your cloud vendor to see what options are
+available.
+Wait for the east-west gateway to be assigned an external IP address:
+Since the clusters are on separate networks, we need to expose all services
+(*.local) on the east-west gateway in both clusters. While this gateway is
+public on the Internet, services behind it can only be accessed by services
+with a trusted mTLS certificate and workload ID, just as if they were on the
+same network.
+If the istio-system namespace is already created, we need to set the cluster’s network there:
+Create the Istio configuration for 
+:
+Apply the configuration to 
+:
+As we did with 
+ above, install a gateway in 
+ that is dedicated
+to east-west traffic.
+Wait for the east-west gateway to be assigned an external IP address:
+As we did with 
+ above, expose services via the east-west gateway.
+Install a remote secret in 
+ that provides access to 
+’s API server.
+Install a remote secret in 
+ that provides access to 
+’s API server.
+ You successfully installed an Istio mesh across multiple
+primary clusters on different networks!
+You can now 
+.
+Initial steps before installing Istio on multiple clusters.
+Install an Istio mesh across multiple primary clusters.
+Install an Istio mesh across primary and remote clusters.
+Install an Istio mesh across primary and remote clusters on different networks.
+Verify that Istio has been installed properly on multiple clusters.
+Workload Local DNS resolution to simplify VM integration, multicluster, and more.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: November 11, 2020

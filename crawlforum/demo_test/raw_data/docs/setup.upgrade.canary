@@ -1,0 +1,72 @@
+
+
+
+
+Upgrading Istio can be done by first running a canary deployment of the new control plane, allowing you
+to monitor the effect of the upgrade with a small percentage of the workloads, before migrating all of the
+traffic to the new version. This is much safer than doing an
+
+ and is the recommended upgrade method.
+When installing Istio, the 
+ installation setting can be used to deploy multiple independent control planes
+at the same time. A canary version of an upgrade can be started by installing the new Istio version’s control plane
+next to the old one, using a different 
+ setting. Each revision is a full Istio control plane implementation
+with its own 
+, 
+, etc.
+To install a new revision called 
+, you would set the 
+ field as follows:
+After running the command, you will have two control plane deployments and services running side-by-side:
+You will also see that there are two sidecar injector configurations including the new revision.
+Unlike istiod, Istio gateways do not run revision-specific instances, but are instead in-place upgraded to use the new control plane revision.
+You can verify that the 
+ gateway is using the 
+ revision by running the following command:
+However, simply installing the new revision has no impact on the existing sidecar proxies. To upgrade these,
+you must configure them to point to the new 
+ control plane. This is controlled during sidecar injection
+based on the namespace label 
+.
+To upgrade the namespace 
+, remove the 
+ label, and add the 
+ label to point to the 
+ revision. The 
+ label must be removed because it takes precedence over the 
+ label for backward compatibility.
+After the namespace updates, you need to restart the pods to trigger re-injection. One way to do
+this is using:
+When the pods are re-injected, they will be configured to point to the 
+ control plane. You can verify this by looking at the pod labels.
+For example, the following command will show all the pods using the 
+ revision:
+To verify that the new pods in the 
+ namespace are using the 
+ service corresponding to the 
+ revision, select one newly created pod and use the 
+ in the following command:
+The output confirms that the pod is using 
+ revision of the control plane.
+After upgrading both the control plane and data plane, you can uninstall the old control plane. For example, the following command uninstalls a control plane of revision 
+:
+If the old control plane does not have a revision label, uninstall it using its original installation options, for example:
+Confirm that the old control plane has been removed and only the new one still exists in the cluster:
+Note that the above instructions only removed the resources for the specified control plane revision, but not cluster-scoped resources shared with other control planes. To uninstall Istio completely, refer to the 
+.
+If you decide to rollback to the old control plane, instead of completing the canary upgrade,
+you can uninstall the canary revision using 
+.
+However, in this case you must first reinstall the gateway(s) for the previous revision manually,
+because the uninstall command will not automatically revert the previously in-place upgraded ones.
+Upgrade or downgrade Istio in place.
+Configuring and upgrading Istio with gateways.
+Provision and manage DNS certificates in Istio.
+A more secure way to manage Istio webhooks.
+De-mystify how Istio manages to plugin its data-plane components into an existing deployment.
+Using Istio to create autoscaled canary deployments.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: November 25, 2020

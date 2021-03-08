@@ -1,0 +1,329 @@
+Jwt origin auth on ingress for some hosts but not for others,5,465
+Citadelclient Failed to Create Certificate,0,25
+gRPC based application access through Istio Ingress in AKS,0,33
+Setting pilot.jwksResolverExtraRootCA using Secrets,0,27
+Istio 1.7 CORS Policy not fully working,1,285
+JWT without sub claim,1,78
+Correct way to require a jwt to access a workload from ingress,2,156
+mTLS PeerAuthentication: allowing specific sources/clients using AuthorizationPolicy?,2,62
+Best way to turn off mTLS for NodePort,0,47
+End User Auth for external use and MTLS for internal service-service communication?,17,1034
+Setting request headers with values from a JWT,12,1890
+API key based authorization,1,67
+Passing Authorization headers automatically (JWT) between microservices,6,194
+Internal auth with lua filter,0,56
+Istio AuthorizationPolicy based on claims,1,58
+Use Istio for authorisation: how to redirect to login page and how to use JWT cookies,5,170
+Istio Ingress Gateway with GKE Ingress and Google Managed Certificates,5,839
+Istio operator: pass ingress mTLS certs via files instead of secrets,2,101
+Istio Auth policy based on fields in request body,3,122
+Istio Peer connection clarification,2,77
+TLS origination from sidecar proxy instead of the Egress Gateway,0,63
+Proxy failed to connect to istiod.istio-system.svc:15012 with user-specified certificate/secret,0,88
+Configuring TLS Versions,13,1736
+How to enable inserting of Authentication headers for outgoing requests using Envoy,3,619
+JWT authorization for external services,1,75
+Prevent outbound packet sniffing,0,61
+Chiron for mTLS certificates,7,552
+Istio JWT verification against JWKS with internally signed certificate,7,782
+TLS Handling from Envoy,2,111
+Adding volumes and volumeMounts to sidecar with global SDS enabled,3,296
+RequestAuthentication doesn't work with keycloak running on https in Istio1.6.8,0,89
+Authservice AuthN Example - Out of Date and Not Working?,0,73
+Cloudflare source IP filtering with Authorization Policy possible?,3,159
+Grace period for token validation whenever the JWK changes,3,148
+How to enable mTLS within mesh in AWS EKS?,1,215
+AuthorizationPolicy Issue,3,145
+Istio Ingress Gateway - https and path based routing,3,278
+Minimum TLS version?,14,1457
+How to setup SSL cert using istio with AWS EKS,3,308
+Terminating MTLS in ingressgateway - what about authorization?,4,250
+Authenticating peer service,4,100
+TLS handshake with custom CA using wildcard egress,2,144
+Trouble using existing CA Certs,5,190
+AuthorizationPolicy not Enforced,2,135
+Syntax suggestion: authorization policy behind a reverse proxy,2,127
+Is DNS Interception available?,2,124
+JWT claims made available?,1,97
+Istio and Keycloak,1,104
+Securing Virtual Machine with Istio,5,152
+Use environment variable RequestAuthentication/AuthorizationPolicy,1,105
+DestinationRule vs PeerAuthentication clarification,3,192
+Istio ingress gateway support tls without SNI,5,616
+RBAC: access denied using JWT with multiple audiences,1,176
+Configuring CORS,6,2550
+Istio Exposed Ports and Security,0,89
+How to add a new CA cert to the Istio Trust Store,3,217
+Istio 1.7 - JWT authentication policy problem,8,297
+Security vulnerabilities in sidecar proxy,0,115
+Different AuthorizationPolicy actions based on paths,2,126
+OIDC - OpenID Connect for 1.7 and beyond,1,141
+Equivalent to traefik forwardAuth (external authorization in istio),0,119
+Istio mTLS strange behavior (bug?),9,230
+JWT-ALB-AuthorizationPolicyIssue,3,211
+Istio-proxy still send encrypted data to pods,1,81
+Healthchecks and mTLS,0,47
+Migrating Kiali from HTTP to HTTPS with istio 1.5.7 using istioctl,1,82
+Reading identity of the source service,1,121
+Istio 1.7 - Setup for JWT Auth,1,201
+Trust between meshes,4,291
+Istio in Kubernetes: Oauth2 External Auth,7,1754
+TLS SDS/credentialName not working with Ingress Gateway,8,3058
+Principle of least privilege for external service access,10,219
+Envoy filter - per_filter_config,8,1429
+Istio 1.4.10: Do not request client certificate on ingress,0,78
+"How to secure against traffic interception by VirtualService ""merging""",4,178
+Authorization Policy IP allow/deny not working on services different than ingress-gateway,5,658
+Does Authorization Policy Conditions support object array value for request.auth.claims?,1,180
+Renew certificates,5,649
+'Upgrading' from citadel to istiod (istio 1.4 to 1.5),0,108
+Istio 1.6.4: Authorisation policy ALLOW is denying,9,250
+ISTIO_MUTUAL for gateway,5,730
+Online Boutique Extensions,1,141
+RBAC Config deserialization code,1,82
+Is Citadel required in Istio 1.5+,1,110
+Getting RBAC denied even the servicerolebinding checked to be allowed,0,238
+Can I use cert-manager for mTLS?,2,277
+What is the recommended way to generate OpenAPI spec?,0,148
+[v1.6] How Istio translates the YAML AuthorizationPolicy in firewall or other rules to accept/deny a request?,2,129
+Istio (1.6.2) : RBAC Access Denied for Valid JWT Token,16,897
+Is it possible that an identical PeerAuthentication could result in two different network environments?,3,123
+Istio mTLS CA certs request SAN list with istio >1.6,1,114
+Can Istio Security Peer Authentication & JWT Authentication Used in Parallel,8,353
+Istio 1.6.5: Chiron generated cert doesn't include the custom dnsNames as SAN,1,136
+Istio 1.5 AuthorizationPolicy using JWT,4,438
+"Istio 1.6.3: ingressgateway error ""Proto constraint validation failed""",3,802
+Istio upgrade from 1.4.6 -> 1.5.0 throws istiod errors : remote error: tls: error decrypting message,7,971
+Certificate manager,1,295
+Custom CA on istio 1.6.2,5,858
+mTLS Client Hello uses wrong SNI,1,247
+Access K8s Secrets from Istio,0,90
+503 errors with AuthorizationPolicy and ALLOW with a Rule,2,233
+Istio + OAuth 2.0,12,9075
+Istio (1.6.2) : DENY policy in Authorization Policy does not work with Valid Token,1,155
+Matching permissions in Istio AuthorizationPolicy,1,156
+mTLS + JWT authentication,1,401
+Plugging in a new (ephemeral) CA certificate,7,318
+Peer Authentication for workload without sidecar,3,196
+"Gateways, mTLS, & certificate revocation",5,600
+Istio pod to pod mTLS,3,279
+Authorization Policy - ISTIO,6,257
+Citadel generated certificates don't match the ones returned by the openssl command,3,450
+Error using tls MUTUAL in DestionationRule for external Service,1,156
+How make AuthorizationPolicy work?,4,433
+Redirect to authentication server - Cookies are not forwarded,0,229
+"Best practices for mounting egress caCertificates (Trouble with: Envoy proxy is NOT ready: config not received from Pilot (is Pilot running?): cds updates: 0 successful, 6 rejected; lds updates: 5 successful, 0 rejected)",6,1170
+MTLS not working properly on 1.6,0,139
+Ingress/egress/sidecar proxies not running when using SDS in istio 1.5.0,5,1243
+NGinx streaming to Istio Gateway - How to expose externally,0,109
+Istioctl installation with profile : citadel,2,152
+mTLS uses wrong SNI in TLS Client Hello,3,181
+mTLS uses wrong SNI in TLS Client Hello,2,149
+Istio + openresty is possible ? What is common(best) practice?,1,242
+Istio not reporting spans when Jaeger is secured with mTLS,0,198
+Upgrading mTLS root certificate,0,125
+"[Question] Decode JWT and put ""sub"" into a request header",15,3399
+"Envoy LUA filter, contact local container for external authorization",17,2552
+Failed to read cacert from credentialName in Gateway,2,479
+Problems create lua filter,3,227
+Mutual TLS with external CA Configuration,6,440
+Elasticsearch client fails to handshake with master,2,140
+Istio 1.5 - PeerAuthentication not reflected on istioctl authn tls-check and istioctl x describe,5,526
+Routing seems broken when enabling mtls on namespace basis,2,178
+Actions required for external CA key/cert to take effect?,2,172
+503 error with requestPrincipals in AuthorizationPlicy (istio 1.5.2),5,332
+Help with blacklist for jwt compromised,3,252
+Adding Envoy NETWORK_FILTER with Client TLS authentication,2,359
+Security - Authorization Policy - 503,6,373
+Forward headers with EnvoyFilters,3,1371
+Get Istio CA in 1.5,5,266
+Empty subject in x-forwarded-client-cert,4,690
+Why css and png are not accessible?,1,173
+Keyfactor New CA Provider Integration,1,226
+Question about istio-ca-secret stored as k8 secret,4,359
+Security Event Logs,2,341
+Istio - PCI in scope environment,0,116
+Authentication policy returning 401 on cors OPTIONS call,3,226
+RBAC controls over Egress traffic,3,208
+Add Istio policies for the same service in all name spaces,2,140
+Mutual TLS with External Services,1,200
+AuthorizationPolicy not allowing health endpoint,2,209
+Questions about Gateways and Let's Encrypt,8,1031
+Istio Multicluster Custom CA Issues,9,682
+Nested JWT claims validation,3,689
+Multicluster control options for gateway,2,138
+Istio 1.5 JWT claim in AuthorizationPolicy,8,717
+Multiple Authenttication policies,2,300
+RequestAuthentication is not forwarding token,2,653
+Plugging in existing CA Certificates in istio1.5,6,480
+Authorization policy challenge,6,334
+End user authentication using JWT throws 401 unauthorized for few attempts before being successful,1,335
+Question on Mixer support in Istio 1.5 and authorization policy,0,121
+Authservice fails to exchange authorization code for access token with keycloak,0,427
+How to implement user authentication with Istio along with LDAP or other components?,6,1083
+Order of execution of Istio Authentication Policy and Mixer-based authorization : Istio 1.3,0,134
+Is it possible to examine the mtls certificate in istio 1.5,5,369
+Citadel support multiple replica or not?,3,409
+Mutual TLS over HTTPS on calls via the ingress gateway - is this possible?,7,2389
+Setting origin identity (e.g request.auth.user) from upstream proxy header value?,0,132
+Default Access Denied issue,0,90
+"L7 protection (XSS, SQL injection) policies",7,1637
+AuthorizationPolicy and Namespaces,1,329
+Restrict access from one service to another,10,1148
+Citadel Health Checking,2,135
+External CA key/cert expiration,0,103
+JWT Issuer Validation,0,112
+Istio mTLS question,3,308
+How to redeploy configuration,0,101
+AuthroizationPolicy for MESH_EXTERNAL ServiceEntries,2,199
+TCP mTLS encryption,1,271
+Configure Istio Ingress Gateway to require header token using Authorization Policy,0,113
+Istio Authorization with Internal Service,25,1264
+JWKS Parse Error,15,939
+TLS Tickets with multiple Ingress Gateway,5,577
+How to tell pilot to fetch JWKS certs using mTLS?,3,404
+Authentication Policy Origins JWT - Internal vs Public Access,1,204
+Securing Istio PKI,4,730
+Citadel rejects requests from mesh expansion node,7,1361
+Istio Authentication with Internal Service,0,101
+Istio and Kubernetes Network Policies,1,151
+Authorization policy is not working properly,2,372
+JWT authentication on specific method,1,249
+Istio mtls connection issues,4,738
+"How do the developers usually specify the end-user permissions? i.e., How do we know the permissions of an end-user?",0,118
+Connectivity Verification from side car to istio pilot for mTLS enabled policy fails,0,230
+"Authorizationpolicy issue with readiness, liveness probes throw 403",3,286
+Authentication policy with okta is not working,1,541
+Centrally Manage Citadel Certificates?,1,336
+Access istio/k8s service via HTTPS,0,205
+Destination rule to set mTLS ignores specific host,5,328
+Authentication and Authorization with JWT get 403,3,1278
+Destination rule to set mTLS ignores port specification,6,534
+Match authentication header,1,378
+Is there a way for SDS service to listen on TCP sockets other than the UDS?,1,197
+Istio Authorization using Keycloak,2,1510
+Issue with Istio 1.3.2 SDS not reloading tls cert and key,1,253
+Not able to create listener port with tls with a non-root user,1,415
+Is mixer not needed for RBAC in Istio 1.3?,2,185
+Envoy sidecar fails to standup (K8S / AKS / mtls / Vault CA),2,411
+Node agent fetches k8s secrets,2,151
+Why not use cert-manager to manage ca cert for istio-sidecar-injector,2,261
+EnvoyFilter - ext_authz for istio 1.3,1,1394
+Urgent - How to verify mTLS communication between services with traffic dump,1,1360
+ISTIO-SECURITY-2019-006: DoS affecting Istio 1.3.x versions,4,485
+"How to hide ""server' response header",2,1456
+Istio node-agent log Level for SDS service,3,293
+Failed to sign CSR,22,1935
+Istio End User Authentication,1,194
+Istio SDS support on GKE - and key rotation,1,197
+Upstream connect error when mtls is enabled at namespace level,4,373
+Ingress Gateway - Decrypt then send to a POD listening on https,2,536
+End-user JWT authentication bypassing authentication,1,201
+Ingress Gateway SDS not working with local build of 1.2.5,2,353
+Citadel revoke workload certificate,1,190
+Vault CA support for Istio 1.3,15,515
+"Missing selected ALPN property, TLS with AWS Certificate, AWS classic LB",0,936
+SSL Configuration,0,244
+Support for encrypted JWT ID tokens (JWE),0,222
+Istio init-container running as root with all capabilities,0,404
+VirtualService always returns 403,0,298
+Why forwarding a Host Header from the previous request with mTLS is not working?,0,126
+Ext_authz filter for HTTP protocol doesn't send request body field to Authz service,1,1196
+External IDP not working for End-user authentication: No dynamic_metadata found,1,140
+Using Gateway + VirtualService + http01 + SDS,9,2207
+Istio external certificate,0,171
+SDS config for the SSL certs,0,140
+[mTLS] Default RootCA for Client Certificates,12,1265
+Istio Open ID Connect Token Acquisition Policy Proposal for End User Authentication,8,472
+mTLS working just between some services with tls-check showing STATUS OK,0,400
+JWT Authentication always 401,2,242
+SSL passthrough does not work without intermediary chain,2,207
+EnvoyFilter for ext-authz,5,1144
+Change headers for original request in a authorization template out of process adapter?,0,129
+Default SSL on Ingress Gateway,12,2975
+Cors preflight does not work when Jwt Policy targets the Istio Ingress Gateway,5,2075
+Headless TCP services losing connection,1,221
+If Istio ingress gateway support different TLS according to different request URL?,5,524
+L7 DDOS Protection,1,488
+End User Auth: Cannot generate a valid JWKS and token pair to pass the authentication,2,200
+Trust custom Root CA on Egress Gateway,18,1282
+Understand the different security mechanisms - policy & RBAC,4,218
+JWT with Namespace-wide excluded_paths dons't work,5,293
+VirtualService Authorization / Delegation,3,479
+Authorization not working,12,1547
+Instructions for configuring Vault for CA integration,4,1099
+Version of cert-manager installed with Istio 1.2.0,4,330
+Anyone using Vault integration at any scale?,3,612
+gRPC JWT Authentication not enforced,8,1080
+JWT and Authorization,7,479
+gRPC JWT Authentication silently failing in Istio [workaround],15,2623
+Nodeagent crashing,7,494
+Role or group based authorization for backend services,3,172
+Support SDS ingress sidecar for Egress Gateway deployment,3,264
+gRPC Validation loophole? [solved],7,640
+Istio RBAC require mTLS?,4,258
+Cannot use JWT policy with an ExternalName VirtualService target,3,460
+"Jwt Authentication for a specific service results in ""upstream connect error or disconnect/reset before headers""",8,2116
+Expired root certificate,6,1428
+Service Account custom attributes,4,295
+Secure Kiali and Jaeger in Istio,1,307
+Authentication policy for JWT appears to be ignored (1.1.8) [solved],4,745
+Server authentication for TCP services relies on DNS,8,495
+Enabling mTLS results in SSL handshake error,4,1365
+JWT Authorizationi Failing,5,537
+Secure kube-apiserver with ssl certificate using cert-manager,3,212
+End User Certificate Authentication,5,714
+DestinationRule with subsets for selecting TLS mode?,2,229
+How to debug pilot secure naming map?,3,216
+Secure Traffic in namespace istio-system,3,361
+Istio RBAC - v1.1.5 - K8S,3,167
+[istio-opa] Mount different policies for different pods's sidecars,2,285
+Run node_agent on premise to get workload CSR,2,181
+Configure gateway with Simple and Mutual TLS for same host,2,199
+Istio security stopped working,1,176
+Missing Common Name on mTLS certificates issued by Citadel,1,334
+DestinationRule mTLS is not applied correctly when client & service are in the same namespace,4,207
+How to connect Namespaces over ingress/egress gateways only?,25,1570
+Rate limiting using redis handler,3,254
+RBAC returns either 403 or 302 for each route randomly,3,429
+SOLVED: mTLS example not working as expected,2,377
+JWT claims validation,5,380
+Certificate Validation with SDS enabled on Ingress Gateway and mode set to MUTUAL,9,830
+The ratings-v2 service fails to work for MongoDB,4,319
+Sidecar to Service communication,6,615
+ServiceRoleBinding subject specification,3,171
+mTLS between Grafana and Prometheus Istio 1.0.5,3,538
+Enable STRICT MTLS for external clients,3,226
+Failed to configure a TLS ingress gateway using SDS,3,416
+Why do gateways require ClusterRoles?,2,293
+Mutual TLS origination by Egress Gateway,2,346
+How to define a an lua module on lua Envoy Filter,2,1626
+Citadel CA root key,3,556
+JWT Policy using local jwks,2,388
+Enhancing Istio service mesh security with a CNI plugin,1,223
+Custom client certificates for service to service calls,8,1188
+An issue with creating an ClusterRbacConfig object,5,434
+What version is required for TLS pass-through?,1,202
+Review request - Istio CA key protection using SoftHSM,1,314
+"Other options than citadel for envoy sidecar certificate management for kubernetes case, such as cert-manager?",3,871
+"""Dynamic"" access rule constraints in a ServiceRole",3,227
+Does citadel issues certs to perimeter proxies,2,246
+Issues with certificate from secret istio-ca-secret (Ingressgateway),1,273
+Upgrade Policy for Istio,1,188
+Error in pull request - During setting up istio's ssl termination,1,366
+"""unknown"" status on connection security policy with prometheus",2,264
+Proposal to protect ISTIO CA key using SoftHSM,4,264
+Istio 1.0.6 - set mtls mode to strict from Helm,1,440
+[Resolved] CronJob and mutual tls,4,950
+Certs termination on ALB. Is connection form ALB to gateway encripted?,9,2689
+[Probably solved in 1.1] Which steps are required to set up trusted service communication?,16,1784
+Citadel Pluggability design review,2,306
+Authentication Policy issues,1,328
+Istio Authorization stability,2,233
+Enable mTLS for ingress gateway but disable mTLS within the mesh,1,450
+Runtime Authorization Rules,1,150
+Certificates authentication,4,244
+Ingressgateway not grabbing end user authentication certs?,1,952
+Security Working Group Meetings,0,222
+Enable Mutual TLS for Control Plane,3,347
+Istio Security Survey,0,216
