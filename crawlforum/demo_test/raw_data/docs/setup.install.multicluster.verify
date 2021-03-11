@@ -1,0 +1,105 @@
+
+
+
+
+Follow this guide to verify that your multicluster Istio installation is working
+properly.
+Before proceeding, be sure to complete the steps under
+
+ as well as
+choosing and following one of the multicluster installation guides.
+In this guide, we will deploy the 
+ application 
+ to 
+
+and 
+ to 
+. Upon receiving a request, 
+ will include
+its version in its response.
+We will also deploy the 
+ container to both clusters. We will use these
+pods as the source of requests to the 
+ service,
+simulating in-mesh traffic. Finally, after generating traffic, we will observe
+which cluster received the requests.
+In order to make the 
+ service callable from any cluster, the DNS
+lookup must succeed in each cluster (see
+
+
+for details). We will address this by deploying the 
+ Service to
+each cluster in the mesh.
+To begin, create the 
+ namespace in each cluster:
+Enable automatic sidecar injection for the 
+ namespace:
+Create the 
+ service in both clusters:
+Deploy the 
+ application to 
+:
+Confirm the 
+ pod status:
+Wait until the status of 
+ is 
+.
+Deploy the 
+ application to 
+:
+Confirm the status the 
+ pod status:
+Wait until the status of 
+ is 
+.
+Deploy the 
+ application to both clusters:
+Confirm the status 
+ pod on 
+:
+Wait until the status of the 
+ pod is 
+.
+Confirm the status of the 
+ pod on 
+:
+Wait until the status of the 
+ pod is 
+.
+To verify that cross-cluster load balancing works as expected, call the
+
+ service several times using the 
+ pod. To ensure load
+balancing is working properly, call the 
+ service from all
+clusters in your deployment.
+Send one request from the 
+ pod on 
+ to the 
+ service:
+Repeat this request several times and verify that the 
+ version
+should toggle between 
+ and 
+:
+Now repeat this process from the 
+ pod on 
+:
+Repeat this request several times and verify that the 
+ version
+should toggle between 
+ and 
+:
+ You successfully installed and verified Istio on multiple
+clusters!
+Initial steps before installing Istio on multiple clusters.
+Install an Istio mesh across multiple primary clusters.
+Install an Istio mesh across multiple primary clusters on different networks.
+Install an Istio mesh across primary and remote clusters.
+Install an Istio mesh across primary and remote clusters on different networks.
+Workload Local DNS resolution to simplify VM integration, multicluster, and more.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: October 22, 2020

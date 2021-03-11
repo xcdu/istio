@@ -59,8 +59,8 @@ def Seq2Seq(man_len, embedding_dim, hidden_units, vocab_size):
 
 
 def encoder_infer(model):
-    encoder_model = Model(inputs=model.get_layer('encoder').inputs,
-                          outputs=model.get_layer('encoder').outputs)
+    encoder_model = Model(inputs=model.get_layer('encoder').input,
+                          outputs=model.get_layer('encoder').output)
     return encoder_model
 
 

@@ -7,11 +7,9 @@ aclImdb
 glove.6B.zip
 */glove.6b
 *.pickle
-.raw_data/forum
 .pyenv
 ./models/test
 ./models/textcnn
-.raw_data
 ./temp
 .python-version
 ./logs

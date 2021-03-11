@@ -1,0 +1,170 @@
+<div class="post" itemprop="articleBody">
+          <p>I have problem configuring CORS for the service exposed by ingress gateway.<br>
+My goal is to get CORS headers when sending OPTION request.<br>
+I’m migrating from Nginx-ingress and for nginx it was as easy as setting the annotation <code>nginx.ingress.kubernetes.io/enable-cors: "true"</code> in the ingress.</p>
+<p>My configuration:<br>
+Gateway:</p>
+<pre><code class="lang-auto">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: example
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - example.com
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: example-tls
+      hosts:
+        - example.com
+</code></pre>
+<p>Virtualservice:</p>
+<pre><code class="lang-auto">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: example
+spec:
+  hosts:
+    - "example.com"
+  gateways:
+    - example
+  http:
+    - match:
+        - uri:
+            prefix: /api/graphql
+      route:
+        - destination:
+            host: example.default.svc.cluster.local
+            port:
+              number: 9999
+      corsPolicy:
+        allowMethods:
+          - POST
+          - OPTIONS
+        allowOrigin:
+          - https://example.com
+        allowHeaders:
+          - authorization
+          - content-type
+    - route:
+        - destination:
+            host: example-ui.default.svc.cluster.local
+            port:
+              number: 80
+</code></pre>
+<p>When I try to run the curl I get:</p>
+<pre><code class="lang-auto">curl -X OPTIONS https://example.com/api/graphql -I
+HTTP/2 404
+content-type: text/plain; charset=UTF-8
+date: Fri, 10 Jul 2020 14:31:52 GMT
+content-length: 9
+x-envoy-upstream-service-time: 4
+server: istio-envoy
+</code></pre>
+<p>What I expect is something like this (this is output from Nginx-ingress)</p>
+<pre><code class="lang-auto">curl -X OPTIONS https://example.com/api/graphql -I
+HTTP/2 204
+server: nginx/1.17.8
+date: Fri, 10 Jul 2020 14:57:39 GMT
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: POST, OPTIONS
+access-control-allow-headers: DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
+access-control-max-age: 1728000
+</code></pre>
+<p>Can someone please point what I’m doing wrong?</p>
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>If you use istio 1.6+ you might need to change <code>allowOrigin</code> to <code>allowOrigins with exact</code> as mentioned <a href="https://github.com/istio/istio/issues/23757#issuecomment-634699992" rel="nofollow noopener">here</a>.</p>
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>Thank you <a class="mention" href="/u/jt97">@jt97</a> for this link. Making such change indeed changed the Istio-proxy config when I check it with <code>istioctl proxy-config</code>.</p>
+<p>It’s a shame this change is not documented.<br>
+Unfortunately, it didn’t solve my problem.<br>
+I still don’t see any of the <code>access-control-*</code> headers.<br>
+Instead, I still get 404 error if I send a request with OPTIONS method as shown in my original post.</p>
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>Oof, that’s several frustrating hours of my life that I won’t be getting back <img src="https://sjc3.discourse-cdn.com/business4/images/emoji/google/confused.png?v=9" title=":confused:" class="emoji" alt=":confused:"></p>
+<p>Would be great if the old examples were updated also. For example:<br>
+</p><aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="https://istio.io/v1.6/favicons/favicon.ico" class="site-icon" width="15" height="15">
+      <a href="https://istio.io/v1.6/docs/reference/config/networking/virtual-service/#CorsPolicy" target="_blank" rel="nofollow noopener">Istio</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://istio.io/v1.6/img/istio-whitelogo-bluebackground-framed.svg" class="thumbnail onebox-avatar" width="59" height="59">
+
+<h3><a href="https://istio.io/v1.6/docs/reference/config/networking/virtual-service/#CorsPolicy" target="_blank" rel="nofollow noopener">Virtual Service</a></h3>
+
+<p>Configuration affecting label/content routing, sni routing, etc.</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>I ran into the same situation with Istio 1.6.10, have you been able to solve this issue?</p>
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>I finally figured it out.  Two things you need to pay attention:</p>
+<ol>
+<li>You need to add the allowed origins in the allowOrigins field.</li>
+<li>You need to specify the “Origin” header in the curl command to indicate that it’s a cors request.</li>
+</ol>
+<p>Otherwise, the access-control-allow-* headers won’t show up.<br>
+For instance:</p>
+<pre><code class="lang-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+ name: cors-rule
+spec:
+ hosts:
+ - http-server.default.svc.cluster.local
+ http:
+ - route:
+   - destination:
+       host: http-server.default.svc.cluster.local
+   corsPolicy:
+     allowOrigins:
+     - exact: http://www.example.com
+     allowMethods:
+     - POST
+     - GET
+     allowHeaders:
+     - X-Custom-Header
+     exposeHeaders:
+     - X-Expose-Header
+     maxAge: 24h
+     allowCredentials: false
+</code></pre>
+<p>k exec http-server-6cc8fd5c68-cnp9h - curl -sv -H “Origin: <a href="http://www.example.com" rel="noopener nofollow ugc">http://www.example.com</a>”  http-server.default.svc.cluster.local/test</p>
+        </div>
+***/n
+<div class="post" itemprop="articleBody">
+          <p>Sorry I haven’t answered, I wasn’t able to make it working as expected.<br>
+Thank you for sharing working solution!</p>
+        </div>
+***/n

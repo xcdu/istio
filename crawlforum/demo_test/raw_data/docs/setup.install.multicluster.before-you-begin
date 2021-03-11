@@ -1,0 +1,60 @@
+
+
+
+
+Before you begin a multicluster installation, review the
+
+
+which describes the foundational concepts used throughout this guide.
+In addition, review the requirements and perform the initial steps below.
+This guide requires that you have two Kubernetes clusters with any of the
+supported Kubernetes versions: 1.16, 1.17, 1.18, 1.19.
+The API Server in each cluster must be accessible to the other clusters in the
+mesh. Many cloud providers make API Servers publicly accessible via network
+load balancers (NLB). If the API Server is not directly accessible, you will
+have to modify the installation procedure to enable access. For example, the
+
+ gateway used in
+the multi-network and primary-remote configurations could also be used
+to enable access to the API Server.
+This guide will refer to two clusters named 
+ and 
+. The following
+environment variables will be used throughout to simplify the instructions:
+For example:
+A multicluster service mesh deployment requires that you establish trust
+between all clusters in the mesh. Depending on the requirements for your
+system, there may be multiple options available for establishing trust.
+See 
+ for
+detailed descriptions and instructions for all available options.
+Depending on which option you choose, the installation instructions for
+Istio may change slightly.
+This guide will assume that you use a common root to generate intermediate
+certificates for each cluster. Follow the 
+
+to generate and push a CA certificate secret to both the 
+ and 
+
+clusters.
+You’re now ready to install an Istio mesh across multiple clusters. The
+particular steps will depend on your requirements for network and
+control plane topology.
+Choose the installation that best fits your needs:
+For meshes that span more than two clusters, you may need to use more than
+one of these options. For example, you may have a primary cluster per region
+(i.e. multi-primary) where each zone has a remote cluster that uses the
+control plane in the regional primary (i.e. primary-remote).
+See 
+ for more
+information.
+Install an Istio mesh across multiple primary clusters.
+Install an Istio mesh across multiple primary clusters on different networks.
+Install an Istio mesh across primary and remote clusters.
+Install an Istio mesh across primary and remote clusters on different networks.
+Verify that Istio has been installed properly on multiple clusters.
+Workload Local DNS resolution to simplify VM integration, multicluster, and more.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: October 30, 2020

@@ -1,0 +1,46 @@
+
+
+
+
+Follow this guide to install the Istio control plane on both 
+ and
+
+, making each a 
+. Both
+clusters reside on the 
+ network, meaning there is direct
+connectivity between the pods in both clusters.
+Before proceeding, be sure to complete the steps under
+
+.
+In this configuration, each control plane observes the API Servers in both
+clusters for endpoints.
+Service workloads communicate directly (pod-to-pod) across cluster boundaries.
+Create the Istio configuration for 
+:
+Apply the configuration to 
+:
+Create the Istio configuration for 
+:
+Apply the configuration to 
+:
+Install a remote secret in 
+ that provides access to 
+’s API server.
+Install a remote secret in 
+ that provides access to 
+’s API server.
+ You successfully installed an Istio mesh across multiple
+primary clusters!
+You can now 
+.
+Initial steps before installing Istio on multiple clusters.
+Install an Istio mesh across multiple primary clusters on different networks.
+Install an Istio mesh across primary and remote clusters.
+Install an Istio mesh across primary and remote clusters on different networks.
+Verify that Istio has been installed properly on multiple clusters.
+Workload Local DNS resolution to simplify VM integration, multicluster, and more.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: October 22, 2020

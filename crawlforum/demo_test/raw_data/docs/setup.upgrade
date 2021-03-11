@@ -1,0 +1,8 @@
+Upgrade, downgrade, and manage Istio accross multiple control plane revisions.
+Upgrade Istio by first running a canary deployment of a new control plane.
+Upgrade or downgrade Istio in place.
+Configuring and upgrading Istio with gateways.
+Istio
+1.8.1
+© 2020 Istio Authors, 
+Page last modified: November 5, 2020

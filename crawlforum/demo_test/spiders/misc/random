@@ -1,0 +1,16 @@
+postList = []
+users = [1, 2,3]
+userLinks = [3,4,5]
+likes = [9,10,11]
+        
+a=['0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1', '0']
+b=[]
+print(len(a))
+for index, value in enumerate(a):
+    
+    if index < len(a)-1:
+        print("index {}".format(index))
+        print(value + "!")
+    else:
+                
+        print(value+"done")

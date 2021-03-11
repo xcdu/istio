@@ -42,8 +42,6 @@ def preprocess_forum_template(forum_dataframe: pd.DataFrame):
     forum_dataframe["template"] = forum_dataframe["template"].apply(__forum_extract_template)
     forum_dataframe = __flatten_forum_templates(forum_dataframe)
     forum_dataframe["processed_template"] = forum_dataframe["template"].apply(__preprocess_forum_template)
-    # for index, row in forum_dataframe.loc[forum_dataframe["template"].notnull()].iterrows():
-    #     print(row[["template", "processed_template"]])
     return forum_dataframe
 
 
@@ -89,8 +87,6 @@ def __preprocess_forum_template(template):
     template_dict = json.loads(template)
     template_prefixed_keys_list = []
     for template_key in template_dict["key"].values():
-        # template_prefixes_keys = template_key.split(TEMPLATE_PREFIX_DELIMITER)
-        # print(template_prefixes_keys)
         template_prefixed_keys_list.append(template_key)
     return template_prefixed_keys_list
 
@@ -103,6 +99,6 @@ def save_forum_dataframe(df: pd.DataFrame, dir_path=PREPROCESSED_CORPUS_FORUM_DI
     df.to_pickle(df_save_path)
 
 
-def load_forum_dataframe(dir_path=PREPROCESSED_CORPUS_FORUM_DIR, filename="preprocessed_forum.pickle"):
+def load_forum_dataframe(dir_path=PREPROCESSED_CORPUS_FORUM_DIR, filename="preprocessed_forum.pickle") -> pd.DataFrame:
     df_load_path = os.path.join(dir_path, filename)
     return pd.read_pickle(df_load_path)
