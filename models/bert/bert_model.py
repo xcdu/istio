@@ -19,7 +19,7 @@ bert_model_name = 'small_bert/bert_en_uncased_L-12_H-768_A-12'
 AUTOTUNE = tf.data.AUTOTUNE
 batch_size = 32
 seed = 42
-epochs = 60
+epochs = 16
 
 train_ds, val_ds, test_ds, vocab_size = get_data(data_path, bert_model_name, batch_size, 70, 10, 20)
 train_ds = train_ds.cache().prefetch(buffer_size=AUTOTUNE)
@@ -50,9 +50,7 @@ class bert_classifier_model(tf.keras.Model):
                                                  kernel_size=4,
                                                  padding="valid",
                                                  activation="relu")
-
         self.pool = tf.keras.layers.GlobalMaxPool1D()
-
         self.dense1 = tf.keras.layers.Dense(units=dnn_units, activation="relu")
         self.dense2 = tf.keras.layers.Dense(units=model_output_classes, activation="softmax")
         self.dropout = tf.keras.layers.Dropout(rate=dropout_rate)
@@ -65,7 +63,6 @@ class bert_classifier_model(tf.keras.Model):
         layer2 = self.pool(layer2)
         layer3 = self.cnn_layer3(layer0)
         layer3 = self.pool(layer3)
-
         all_layers = tf.concat([layer1, layer2, layer3], axis=-1)
         all_layers = self.dense1(all_layers)
         all_layers = self.dropout(all_layers, training)

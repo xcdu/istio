@@ -13,6 +13,19 @@ import official.nlp.bert.tokenization
 
 from model_mapping import name_to_handle
 
+# Can add/subtract to this if necessary
+stop_words = ["ourselves", "hers", "between", "yourself", "but", "again", "there", "about", "once", "during",
+              "out", "very", "having", "with", "they", "own", "an", "be", "some", "for", "do", "its", "yours",
+              "such", "into", "of", "most", "itself", "other", "off", "is", "s", "am", "or", "who", "as", "from",
+              "him", "each", "the", "themselves", "until", "below", "are", "we", "these", "your", "his", "through",
+              "don", "nor", "me", "were", "her", "more", "himself", "this", "down", "should", "our", "their",
+              "while", "above", "both", "up", "to", "ours", "had", "she", "all", "no", "when", "at", "any",
+              "before", "them", "same", "and", "been", "have", "in", "will", "on", "does", "yourselves", "then",
+              "that", "because", "what", "over", "why", "so", "can", "did", "not", "now", "under", "he", "you",
+              "herself", "has", "just", "where", "too", "only", "myself", "which", "those", "i", "after", "few",
+              "whom", "t", "being", "if", "theirs", "my", "against", "a", "by", "doing", "it", "how", "further",
+              "was", "here", "than"]
+
 def get_data(path_to_file, model_name, batch_size, train_count, validate_count, test_count):
     all_texts = []
     all_labels = []
@@ -28,7 +41,7 @@ def get_data(path_to_file, model_name, batch_size, train_count, validate_count, 
                 first_line = False
             else:
                 if row[1] == '0' and row[7] in data_labels:  # Valid data
-                    all_texts.append(row[6])
+                    all_texts.append(row[6] + ' ' + row[9])
                     all_labels.append(label_to_int[row[7]])
     np_all_labels = np.array(all_labels)
 
@@ -54,7 +67,21 @@ def get_data(path_to_file, model_name, batch_size, train_count, validate_count, 
     tokenizer = bert.tokenization.FullTokenizer(vocab_file=vocab_file, do_lower_case=True)
     tokenized_texts = []
     for comment in edited_texts:
-        tokenized_texts.append(tokenizer.convert_tokens_to_ids(tokenizer.tokenize(comment)))
+        tokenized_texts.append(tokenizer.tokenize(comment))
+
+    # Remove stop words
+    edited_texts.clear()
+    for words in tokenized_texts:
+        words_to_keep = []
+        for word in words:
+            if word not in stop_words:
+                words_to_keep.append(word)
+        edited_texts.append(words_to_keep)
+
+    # Convert to token ids
+    tokenized_texts.clear()
+    for set_of_words in edited_texts:
+        tokenized_texts.append(tokenizer.convert_tokens_to_ids(set_of_words))
 
     dataset = [[text, np_all_labels[i], len(text)] for i, text in enumerate(tokenized_texts)]
     dataset.sort(key=lambda x: x[2])
