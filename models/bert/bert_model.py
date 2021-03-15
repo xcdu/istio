@@ -19,7 +19,7 @@ bert_model_name = 'small_bert/bert_en_uncased_L-12_H-768_A-12'
 AUTOTUNE = tf.data.AUTOTUNE
 batch_size = 32
 seed = 42
-epochs = 16
+epochs = 20
 
 train_ds, val_ds, test_ds, vocab_size = get_data(data_path, bert_model_name, batch_size, 70, 10, 20)
 train_ds = train_ds.cache().prefetch(buffer_size=AUTOTUNE)
