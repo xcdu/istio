@@ -1,0 +1,326 @@
+Adding volumes and volumeMounts to sidecar with global SDS enabled - Security - Discuss Istio:emike,emike,Jonas_Breuer,emike
+TLS Handling from Envoy - Security - Discuss Istio:George_Pentaris,nick_tetrate,George_Pentaris
+Authservice AuthN Example - Out of Date and Not Working? - Security - Discuss Istio:zimmertr
+RequestAuthentication doesn't work with keycloak running on https in Istio1.6.8 - Security - Discuss Istio:mudiki08
+Istio JWT verification against JWKS with internally signed certificate - Security - Discuss Istio:Rodrigo_Valladares,olaf-meyer,YangminZhu,olaf-meyer,YangminZhu,Rakesh_Bhat,mudiki08,olaf-meyer
+Cloudflare source IP filtering with Authorization Policy possible? - Security - Discuss Istio:Bryan_Absher,YangminZhu,Bryan_Absher,YangminZhu
+Jwt origin auth on ingress for some hosts but not for others - Security - Discuss Istio:Dan_McFarlane,YangminZhu,Dan_McFarlane,Dan_McFarlane,Pramod_Kumar
+Chiron for mTLS certificates - Security - Discuss Istio:rumba,liminwang,leitang,rumba,rmichela,sandeep1699,leitang,leitang
+How to enable inserting of Authentication headers for outgoing requests using Envoy - Security - Discuss Istio:Sameer_Kapoor,sands6,YangminZhu,Sameer_Kapoor
+JWT authorization for external services - Security - Discuss Istio:sudhakar890,YangminZhu
+Proxy failed to connect to istiod.istio-system.svc:15012 with user-specified certificate/secret - Security - Discuss Istio:patpeng
+TLS origination from sidecar proxy instead of the Egress Gateway - Security - Discuss Istio:User898231
+Istio Peer connection clarification - Security - Discuss Istio:chen,Marco_Li,chen
+Prevent outbound packet sniffing - Security - Discuss Istio:Chris_Barton
+Configuring TLS Versions - Security - Discuss Istio:hercynium,spikecurtis,111,incfly,111,pbohman,111,lk1,jtrbs,111,111,William_Li,111,111
+Istio Auth policy based on fields in request body - Security - Discuss Istio:senthilrch,chen,YangminZhu,senthilrch
+Equivalent to traefik forwardAuth (external authorization in istio) - Security - Discuss Istio:ols
+Istio mTLS strange behavior (bug?) - Security - Discuss Istio:m0ps,m0ps,m0ps,m0ps,jtrbs,m0ps,JimmyChen,m0ps,m0ps,m0ps
+Different AuthorizationPolicy actions based on paths - Security - Discuss Istio:KyleB,JimmyChen,YangminZhu
+Security vulnerabilities in sidecar proxy - Security - Discuss Istio:deepak_deore
+OIDC - OpenID Connect for 1.7 and beyond - Security - Discuss Istio:Alex_Van_Boxel,JimmyChen
+Istio 1.7 - JWT authentication policy problem - Security - Discuss Istio:KyleB,KyleB,William_Li,William_Li,KyleB,William_Li,senthilrch,YangminZhu,senthilrch
+Istio Exposed Ports and Security - Security - Discuss Istio:michael
+How to add a new CA cert to the Istio Trust Store - Security - Discuss Istio:ad-tfs,JimmyChen,fostpau,fostpau
+RBAC: access denied using JWT with multiple audiences - Security - Discuss Istio:Mark_NS,linggg
+Istio ingress gateway support tls without SNI - Security - Discuss Istio:dontreboot,YangminZhu,prune,dontreboot,ambrons,TransientMethod
+DestinationRule vs PeerAuthentication clarification - Security - Discuss Istio:LinAnt,Sabyasachi2k,LinAnt,sfudeus
+Configuring CORS - Security - Discuss Istio:gkocur,jt97,gkocur,Mark_NS,zhaohuabing,zhaohuabing,gkocur
+Istio 1.7 CORS Policy not fully working - Security - Discuss Istio:lamchan,lamchan
+Use environment variable RequestAuthentication/AuthorizationPolicy - Security - Discuss Istio:brunooliveiramac,liminwang
+Securing Virtual Machine with Istio - Security - Discuss Istio:mcastro,Varun_Talwar,liminwang,ELI_MA,liminwang,deepak_deore
+Can Istio Security Peer Authentication & JWT Authentication Used in Parallel - Security - Discuss Istio:Eugene_Thai,William_Li,Eugene_Thai,JimmyChen,Eugene_Thai,YangminZhu,Eugene_Thai,Eugene_Thai,YangminZhu
+Istio mTLS CA certs request SAN list with istio >1.6 - Security - Discuss Istio:a.manohar,YangminZhu
+Is it possible that an identical PeerAuthentication could result in two different network environments? - Security - Discuss Istio:Renee,linggg,YangminZhu,incfly
+What is the recommended way to generate OpenAPI spec? - Security - Discuss Istio:Shamsh_Tabrij
+[v1.6] How Istio translates the YAML AuthorizationPolicy in firewall or other rules to accept/deny a request? - Security - Discuss Istio:Luigi_Ferrettino,YangminZhu,Luigi_Ferrettino
+Can I use cert-manager for mTLS? - Security - Discuss Istio:lindhe,yeti,lindhe
+Getting RBAC denied even the servicerolebinding checked to be allowed - Security - Discuss Istio:unclerayray
+Istio (1.6.2) : RBAC Access Denied for Valid JWT Token - Security - Discuss Istio:sweta581990,mandarjog,jt97,sweta581990,Shubham,Shubham,sweta581990,sweta581990,YangminZhu,Shubham,sweta581990,sweta581990,Shubham,sweta581990,sweta581990,YangminZhu,Shubham
+Is Citadel required in Istio 1.5+ - Security - Discuss Istio:michael,incfly
+mTLS uses wrong SNI in TLS Client Hello - Security - Discuss Istio:gnu300,YangminZhu,gnu111
+Istioctl installation with profile : citadel - Security - Discuss Istio:quixoticmonk,deepak_deore,quixoticmonk
+mTLS uses wrong SNI in TLS Client Hello - Security - Discuss Istio:gnu111,YangminZhu,gnu111,gnu111
+Istio + openresty is possible ? What is common(best) practice? - Security - Discuss Istio:Maks_Usanin,YangminZhu
+NGinx streaming to Istio Gateway - How to expose externally - Security - Discuss Istio:Ricardo_Morais
+Ingress/egress/sidecar proxies not running when using SDS in istio 1.5.0 - Security - Discuss Istio:rajat,Oliver,rajat,Melvin_Ramos,rajat,Melvin_Ramos
+MTLS not working properly on 1.6 - Security - Discuss Istio:Jaison_Netto_J
+Best practices for mounting egress caCertificates (Trouble with: Envoy proxy is NOT ready: config not received from Pilot (is Pilot running?): cds updates: 0 successful, 6 rejected; lds updates: 5 successful, 0 rejected) - Security - Discuss Istio:JayDub,incfly,JayDub,Tomas_Kohout,JayDub,Tomas_Kohout,JayDub
+Redirect to authentication server - Cookies are not forwarded - Security - Discuss Istio:yaakov-berkovitch
+Error using tls MUTUAL in DestionationRule for external Service - Security - Discuss Istio:Leandro_Rodrigues_de,Leandro_Rodrigues_de
+Citadel generated certificates don't match the ones returned by the openssl command - Security - Discuss Istio:Hugo,Hugo,Hugo,Dinesh3467
+Authorization Policy - ISTIO - Security - Discuss Istio:Sabyasachi2k,incfly,Sabyasachi2k,Sabyasachi2k,incfly,Sabyasachi2k,Arvind_Kumar
+Istio Multicluster Custom CA Issues - Security - Discuss Istio:nisplay_dame,liminwang,nisplay_dame,leitang,nisplay_dame,nisplay_dame,Mike_Treadway,Tomas_Kohout,Mike_Treadway,linsun
+Questions about Gateways and Let's Encrypt - Security - Discuss Istio:alex88,Tomas_Kohout,bethmage,alex88,Tomas_Kohout,alex88,Tomas_Kohout,alex88,Tomas_Kohout
+How make AuthorizationPolicy work? - Security - Discuss Istio:pmalek,William_Li,pmalek,Shubham,pmalek
+AuthorizationPolicy not allowing health endpoint - Security - Discuss Istio:jebinjeb,jebinjeb,incfly
+Add Istio policies for the same service in all name spaces - Security - Discuss Istio:Yonghao_Yu,Yonghao_Yu,incfly
+Mutual TLS with External Services - Security - Discuss Istio:Leandro_Rodrigues_de,incfly
+Authentication policy returning 401 on cors OPTIONS call - Security - Discuss Istio:Rodrigo_Valladares,incfly,Rodrigo_Valladares,YangminZhu
+Istio - PCI in scope environment - Security - Discuss Istio:aistiok
+RBAC controls over Egress traffic - Security - Discuss Istio:mt165,YangminZhu,mt165,Laci21
+Security Event Logs - Security - Discuss Istio:turturici,YangminZhu,anat_avni
+Question about istio-ca-secret stored as k8 secret - Security - Discuss Istio:deepak_deore,Shubham,ajitchahal,deepak_deore,JimmyChen
+JWKS Parse Error - Security - Discuss Istio:jammerful,jammerful,JimmyChen,YangminZhu,jammerful,jammerful,Michael_Whittlestone,jammerful,YangminZhu,jammerful,YangminZhu,jammerful,jammerful,YangminZhu,liquid,jammerful
+Configure Istio Ingress Gateway to require header token using Authorization Policy - Security - Discuss Istio:Edgar_Peixoto
+Istio Authorization with Internal Service - Security - Discuss Istio:Bastian_Ubilla1,YangminZhu,Bastian_Ubilla1,Bastian_Ubilla1,YangminZhu,Bastian_Ubilla1,obelisk,Bastian_Ubilla1,obelisk,Bastian_Ubilla1,obelisk,Bastian_Ubilla1,obelisk,Bastian_Ubilla1,Bastian_Ubilla1,obelisk,Bastian_Ubilla1,Bastian_Ubilla1,obelisk,Bastian_Ubilla1
+TCP mTLS encryption - Security - Discuss Istio:whatthewhat,bhudlemeyer
+How to redeploy configuration - Security - Discuss Istio:Barry
+Istio mTLS question - Security - Discuss Istio:a8j8i8t8,chilu49,a8j8i8t8,Oliver
+AuthroizationPolicy for MESH_EXTERNAL ServiceEntries - Security - Discuss Istio:rmichela,ChadWilson,Jacob
+JWT Issuer Validation - Security - Discuss Istio:Bryan_Absher
+External CA key/cert expiration - Security - Discuss Istio:jaid
+Urgent - How to verify mTLS communication between services with traffic dump - Security - Discuss Istio:sreenivasmr,incfly
+EnvoyFilter - ext_authz for istio 1.3 - Security - Discuss Istio:mgwizdz,adamplansky
+Why not use cert-manager to manage ca cert for istio-sidecar-injector - Security - Discuss Istio:Yisaer,incfly,leitang
+Node agent fetches k8s secrets - Security - Discuss Istio:dontreboot,nrjpoddar,philliple
+Envoy sidecar fails to standup (K8S / AKS / mtls / Vault CA) - Security - Discuss Istio:sundipnair,incfly,leitang
+Is mixer not needed for RBAC in Istio 1.3? - Security - Discuss Istio:dontreboot,philliple,YangminZhu
+Issue with Istio 1.3.2 SDS not reloading tls cert and key - Security - Discuss Istio:wbeckwith,JimmyChen
+Not able to create listener port with tls with a non-root user - Security - Discuss Istio:rajat_singh,JimmyChen
+Istio Authorization using Keycloak - Security - Discuss Istio:Kannan_K_R,JimmyChen,YangminZhu
+Is there a way for SDS service to listen on TCP sockets other than the UDS? - Security - Discuss Istio:abhijitherekar,JimmyChen
+Change headers for original request in a authorization template out of process adapter? - Security - Discuss Istio:ansh
+EnvoyFilter for ext-authz - Security - Discuss Istio:ddibiase,ddibiase,spikecurtis,ddibiase,spikecurtis,ddibiase
+SSL passthrough does not work without intermediary chain - Security - Discuss Istio:tvalasek,Steven_O_brien,tvalasek
+JWT Authentication always 401 - Security - Discuss Istio:tx19980520,YangminZhu,tx19980520
+mTLS working just between some services with tls-check showing STATUS OK - Security - Discuss Istio:afilgueira
+Istio Open ID Connect Token Acquisition Policy Proposal for End User Authentication - Security - Discuss Istio:Peter_Chen,Tian_Wang,jammerful,Peter_Chen,jammerful,ppennanen,Peter_Chen,Peter_Chen,ppennanen
+[mTLS] Default RootCA for Client Certificates - Security - Discuss Istio:Phlak106,incfly,Phlak106,JimmyChen,nitishm,JimmyChen,nitishm,JimmyChen,Phlak106,nitishm,Phlak106,Phlak106,JimmyChen
+SDS config for the SSL certs - Security - Discuss Istio:abhijitherekar
+Istio external certificate - Security - Discuss Istio:pooja.038
+Using Gateway + VirtualService + http01 + SDS - Security - Discuss Istio:Amir_Movahedi,wenchenglu,diemtvu,AlexD,diemtvu,AlexD,AlexD,AlexD,gustavovalverde,AlexD
+External IDP not working for End-user authentication: No dynamic_metadata found - Security - Discuss Istio:g233007,rob
+Enabling mTLS results in SSL handshake error - Security - Discuss Istio:ukdvivek,wenchenglu,Tao_Li,leitang,ukdvivek
+Server authentication for TCP services relies on DNS - Security - Discuss Istio:pbohman,spikecurtis,wenchenglu,pbohman,Tao_Li,Oliver,spikecurtis,Oliver,spikecurtis
+Authentication policy for JWT appears to be ignored (1.1.8) [solved] - Security - Discuss Istio:KarlMutch,KarlMutch,YangminZhu,philliple,KarlMutch
+Secure Kiali and Jaeger in Istio - Security - Discuss Istio:Christian_Wohrle,lucas.ponce
+Service Account custom attributes - Security - Discuss Istio:andyast,wenchenglu,andyast,spikecurtis,andyast
+Jwt Authentication for a specific service results in "upstream connect error or disconnect/reset before headers" - Security - Discuss Istio:chaturvedia,YangminZhu,pbhoj,chaturvedia,divya21raj,YangminZhu,divya21raj,divya21raj,diemtvu
+Cannot use JWT policy with an ExternalName VirtualService target - Security - Discuss Istio:kostas,spikecurtis,diemtvu,kostas
+Expired root certificate - Security - Discuss Istio:sebastian-garn,incfly,Oliver,sebastian-garn,Oliver,hany_mhajna,philliple
+Istio RBAC require mTLS? - Security - Discuss Istio:bappr,spikecurtis,philliple,YangminZhu,bappr
+JWT Policy using local jwks - Security - Discuss Istio:my3sons,Oliver,YangminZhu
+Citadel CA root key - Security - Discuss Istio:peterthomassen,Tao_Li,peterthomassen,Tao_Li
+How to define a an lua module on lua Envoy Filter - Security - Discuss Istio:Rodrigo_Valladares,spikecurtis,theganyo
+Mutual TLS origination by Egress Gateway - Security - Discuss Istio:nicolasmai,incfly,nicolasmai
+Why do gateways require ClusterRoles? - Security - Discuss Istio:Matt_Miller,JimmyChen,YangminZhu
+Failed to configure a TLS ingress gateway using SDS - Security - Discuss Istio:Star_Zhang,JimmyChen,YangminZhu,Star_Zhang
+Enable STRICT MTLS for external clients - Security - Discuss Istio:anubhav,Oliver,anubhav,anubhav
+mTLS between Grafana and Prometheus Istio 1.0.5 - Security - Discuss Istio:afah,JimmyChen,spekr,afah
+ServiceRoleBinding subject specification - Security - Discuss Istio:lbudai,YangminZhu,lbudai,YangminZhu
+Sidecar to Service communication - Security - Discuss Istio:AshishThakur,igor_mishsky,nrjpoddar,AshishThakur,nrjpoddar,shaul_rozen,Etai_Lev_Ran
+Istio Security Survey - Security - Discuss Istio:liminwang
+Enable Mutual TLS for Control Plane - Security - Discuss Istio:zhaohuabing,rafik8,zhaohuabing,rafik8
+Security Working Group Meetings - Security - Discuss Istio:spikecurtis
+Ingressgateway not grabbing end user authentication certs? - Security - Discuss Istio:ryan,YangminZhu
+Certificates authentication - Security - Discuss Istio:Ksyu,rafik8,Ksyu,YangminZhu,Ksyu
+Runtime Authorization Rules - Security - Discuss Istio:sherwoodzern,YangminZhu
+Enable mTLS for ingress gateway but disable mTLS within the mesh - Security - Discuss Istio:ritz,YangminZhu
+Istio Authorization stability - Security - Discuss Istio:voanhduy1512,YangminZhu,sdake
+Authentication Policy issues - Security - Discuss Istio:scarter,scarter
+Citadel Pluggability design review - Security - Discuss Istio:Oliver,pnambiar,spikecurtis
+Certs termination on ALB. Is connection form ALB to gateway encripted? - Security - Discuss Istio:AlexD,spikecurtis,AlexD,spikecurtis,AlexD,spikecurtis,AlexD,Guido_Pepper,spikecurtis,Guido_Pepper
+[Probably solved in 1.1] Which steps are required to set up trusted service communication? - Security - Discuss Istio:Anton,spikecurtis,Anton,Anton,spikecurtis,Anton,spikecurtis,Anton,Anton,liminwang,Anton,liminwang,Anton,Anton,liminwang,Anton,liminwang
+[Resolved] CronJob and mutual tls - Security - Discuss Istio:Anton,ed.snible,Anton,ed.snible,Anton
+Proposal to protect ISTIO CA key using SoftHSM - Security - Discuss Istio:mrangana,spikecurtis,mrangana,spikecurtis,spikecurtis
+Istio 1.0.6 - set mtls mode to strict from Helm - Security - Discuss Istio:JGE,Tao_Li
+"unknown" status on connection security policy with prometheus - Security - Discuss Istio:sethokayba,douglas-reid,sethokayba
+Error in pull request - During setting up istio's ssl termination - Security - Discuss Istio:Deepika_Jain,Oliver
+Upgrade Policy for Istio - Security - Discuss Istio:irisdingbj,Oliver
+Issues with certificate from secret istio-ca-secret (Ingressgateway) - Security - Discuss Istio:devcloud,Oliver
+Does citadel issues certs to perimeter proxies - Security - Discuss Istio:AshishThakur,spikecurtis,AshishThakur
+"Dynamic" access rule constraints in a ServiceRole - Security - Discuss Istio:carlosaml,Oliver,YangminZhu,liminwang
+Other options than citadel for envoy sidecar certificate management for kubernetes case, such as cert-manager? - Security - Discuss Istio:hping,Oliver,hping,Oliver
+Review request - Istio CA key protection using SoftHSM - Security - Discuss Istio:mrangana,spikecurtis
+What version is required for TLS pass-through? - Security - Discuss Istio:thecodejunkie,ZackButcher
+An issue with creating an ClusterRbacConfig object - Security - Discuss Istio:akyyy,spikecurtis,akyyy,liminwang,ostromart,akyyy
+Custom client certificates for service to service calls - Security - Discuss Istio:arianm,Tao_Li,Oliver,arianm,Oliver,arianm,Oliver,arianm,chen23
+The ratings-v2 service fails to work for MongoDB - Security - Discuss Istio:anabas,wenchenglu,YangminZhu,anabas,YangminZhu
+Enhancing Istio service mesh security with a CNI plugin - Security - Discuss Istio:waynz0r,Tao_Li
+Certificate Validation with SDS enabled on Ingress Gateway and mode set to MUTUAL - Security - Discuss Istio:nitishm,nitishm,nitishm,spikecurtis,nitishm,Tao_Li,nitishm,Tao_Li,nitishm,Tao_Li
+JWT claims validation - Security - Discuss Istio:younss,davinkevin,YangminZhu,younss,YangminZhu,younss
+SOLVED: mTLS example not working as expected - Security - Discuss Istio:ukdvivek,YangminZhu,ukdvivek
+RBAC returns either 403 or 302 for each route randomly - Security - Discuss Istio:Peter_Flanagan,YangminZhu,Peter_Flanagan,Peter_Flanagan
+Rate limiting using redis handler - Security - Discuss Istio:SuperMohit,liminwang,geeknoid,gargnupur
+How to connect Namespaces over ingress/egress gateways only? - Security - Discuss Istio:1113,nitishm,nitishm,nitishm,Tao_Li,nitishm,Tao_Li,nitishm,skydoctor,wenchenglu,skydoctor,wenchenglu,1113,nitishm,wenchenglu,skydoctor,wenchenglu,1113,nitishm,wenchenglu
+Missing Common Name on mTLS certificates issued by Citadel - Security - Discuss Istio:nidhikv,spikecurtis
+Istio security stopped working - Security - Discuss Istio:Peter_Flanagan,philliple
+DestinationRule mTLS is not applied correctly when client & service are in the same namespace - Security - Discuss Istio:idan_frimark,frankbu,idan_frimark,frankbu,idan_frimark
+Configure gateway with Simple and Mutual TLS for same host - Security - Discuss Istio:Binoy_Sankar,wenchenglu,diemtvu
+Run node_agent on premise to get workload CSR - Security - Discuss Istio:michaelbi,wenchenglu,leitang
+[istio-opa] Mount different policies for different pods's sidecars - Security - Discuss Istio:Hasintha_Indrajee,wenchenglu,liminwang
+Istio RBAC - v1.1.5 - K8S - Security - Discuss Istio:bappr,philliple,bappr,philliple
+Secure Traffic in namespace istio-system - Security - Discuss Istio:Christian_Wohrle,wenchenglu,Christian_Wohrle,Oliver
+DestinationRule with subsets for selecting TLS mode? - Security - Discuss Istio:tsaarni,wenchenglu,Oliver
+How to debug pilot secure naming map? - Security - Discuss Istio:xeviknal,wenchenglu,YangminZhu,Oliver
+End User Certificate Authentication - Security - Discuss Istio:JulianCuevas,spikecurtis,JulianCuevas,YangminZhu,JulianCuevas,dseapy
+Secure kube-apiserver with ssl certificate using cert-manager - Security - Discuss Istio:Damian_Dabrowski,spikecurtis,Damian_Dabrowski,spikecurtis
+JWT Authorizationi Failing - Security - Discuss Istio:mgrand-wawa,KarlMutch,YangminZhu,YangminZhu,mgrand-wawa,YangminZhu
+gRPC Validation loophole? [solved] - Security - Discuss Istio:KarlMutch,diemtvu,KarlMutch,diemtvu,KarlMutch,diemtvu,KarlMutch,KarlMutch
+Support SDS ingress sidecar for Egress Gateway deployment - Security - Discuss Istio:nitishm,Tao_Li,nitishm,nitishm
+Role or group based authorization for backend services - Security - Discuss Istio:palic,philliple,YangminZhu,palic
+Nodeagent crashing - Security - Discuss Istio:Niraj_Tulachan,Niraj_Tulachan,philliple,Niraj_Tulachan,dgn,incfly,Quanjie_Lin,howardjohn
+gRPC JWT Authentication silently failing in Istio [workaround] - Security - Discuss Istio:KarlMutch,YangminZhu,KarlMutch,YangminZhu,KarlMutch,philliple,KarlMutch,philliple,divya21raj,philliple,YangminZhu,KarlMutch,KarlMutch,YangminZhu,KarlMutch,YangminZhu
+JWT and Authorization - Security - Discuss Istio:sethokayba,aguromano,sethokayba,theganyo,liminwang,sethokayba,jammerful,philliple
+gRPC JWT Authentication not enforced - Security - Discuss Istio:jammerful,jammerful,JimmyChen,jammerful,Quanjie_Lin,YangminZhu,jammerful,philliple,jammerful
+Anyone using Vault integration at any scale? - Security - Discuss Istio:jonmoter,incfly,leitang,pbohman
+Version of cert-manager installed with Istio 1.2.0 - Security - Discuss Istio:erick-thompson,JimmyChen,philrud,nitishm,erick-thompson
+Instructions for configuring Vault for CA integration - Security - Discuss Istio:jonmoter,leitang,jonmoter,leitang,Simone
+Authorization not working - Security - Discuss Istio:fnature,YangminZhu,fnature,YangminZhu,fnature,YangminZhu,fnature,fnature,YangminZhu,fnature,YangminZhu,waqar,YangminZhu
+VirtualService Authorization / Delegation - Security - Discuss Istio:dcherman,leitang,YangminZhu,dcherman
+JWT with Namespace-wide excluded_paths dons't work - Security - Discuss Istio:Erick_Yataco,jammerful,leitang,YangminZhu,Erick_Yataco,YangminZhu
+Understand the different security mechanisms - policy & RBAC - Security - Discuss Istio:mt165,linsun,philliple,YangminZhu,mt165
+Trust custom Root CA on Egress Gateway - Security - Discuss Istio:nicolasmai,nitishm,vadimeisenbergibm,nicolasmai,nicolasmai,nitishm,nicolasmai,vadimeisenbergibm,nicolasmai,nicolasmai,nicolasmai,Tao_Li,nicolasmai,nicolasmai,Tao_Li,vadimeisenbergibm,nicolasmai,vadimeisenbergibm,nicolasmai
+End User Auth: Cannot generate a valid JWKS and token pair to pass the authentication - Security - Discuss Istio:feng0905,YangminZhu,feng0905
+L7 DDOS Protection - Security - Discuss Istio:pnambiar,dwctua
+If Istio ingress gateway support different TLS according to different request URL? - Security - Discuss Istio:ShileiGuo,spikecurtis,ShileiGuo,vadimeisenbergibm,ShileiGuo,ShileiGuo
+Headless TCP services losing connection - Security - Discuss Istio:lamplet,YangminZhu
+Cors preflight does not work when Jwt Policy targets the Istio Ingress Gateway - Security - Discuss Istio:kostas,kostas,YangminZhu,kostas,kostas,YangminZhu
+Ext_authz filter for HTTP protocol doesn't send request body field to Authz service - Security - Discuss Istio:1113,1113
+Default SSL on Ingress Gateway - Security - Discuss Istio:Daniel_Watrous,YangminZhu,Daniel_Watrous,Daniel_Watrous,nitishm,nitishm,Daniel_Watrous,nitishm,JimmyChen,Daniel_Watrous,Daniel_Watrous,Daniel_Watrous,Daniel_Watrous
+Why forwarding a Host Header from the previous request with mTLS is not working? - Security - Discuss Istio:afilgueira
+VirtualService always returns 403 - Security - Discuss Istio:pedrohjordao
+Istio init-container running as root with all capabilities - Security - Discuss Istio:dan
+Support for encrypted JWT ID tokens (JWE) - Security - Discuss Istio:Bogdan_Dimitriu
+SSL Configuration - Security - Discuss Istio:Umesh_Reddy
+Missing selected ALPN property, TLS with AWS Certificate, AWS classic LB - Security - Discuss Istio:KarlMutch
+Vault CA support for Istio 1.3 - Security - Discuss Istio:dontreboot,Oliver,Steven_O_brien,leitang,dontreboot,leitang,dontreboot,philliple,leitang,dontreboot,philliple,dontreboot,philliple,leitang,dontreboot,leitang
+Citadel revoke workload certificate - Security - Discuss Istio:dontreboot,dontreboot
+Ingress Gateway SDS not working with local build of 1.2.5 - Security - Discuss Istio:rtmie,rtmie,rtmie
+End-user JWT authentication bypassing authentication - Security - Discuss Istio:navrem,navrem
+Ingress Gateway - Decrypt then send to a POD listening on https - Security - Discuss Istio:nictrix,hzxuzhonghu,YangminZhu
+Upstream connect error when mtls is enabled at namespace level - Security - Discuss Istio:sreenivasmr,Haim_Helman,sreenivasmr,Haim_Helman,sreenivasmr
+Istio SDS support on GKE - and key rotation - Security - Discuss Istio:prabath,JimmyChen
+Istio End User Authentication - Security - Discuss Istio:Peisheng_Wu,chaturvedia
+Failed to sign CSR - Security - Discuss Istio:Simone,philliple,leitang,Simone,philliple,Simone,philliple,Simone,Simone,Simone,leitang,Simone,leitang,Simone,leitang,Simone,leitang,Kasun,leitang,Kasun
+Istio node-agent log Level for SDS service - Security - Discuss Istio:abhijitherekar,philliple,deyang,philliple
+How to hide "server' response header - Security - Discuss Istio:dontreboot,scenusa,dontreboot
+ISTIO-SECURITY-2019-006: DoS affecting Istio 1.3.x versions - Security - Discuss Istio:Francois,dontreboot,Francois,dontreboot,Francois
+Match authentication header - Security - Discuss Istio:ricco404,YangminZhu
+Authentication and Authorization with JWT get 403 - Security - Discuss Istio:UNix3,JimmyChen,YangminZhu,UNix3
+Destination rule to set mTLS ignores specific host - Security - Discuss Istio:idan_frimark,JimmyChen,incfly,idan_frimark,incfly,idan_frimark
+Centrally Manage Citadel Certificates? - Security - Discuss Istio:Luke.S,oaktowner
+Authentication policy with okta is not working - Security - Discuss Istio:Aparna_Saripaka,liminwang
+Destination rule to set mTLS ignores port specification - Security - Discuss Istio:idan_frimark,incfly,idan_frimark,incfly,idan_frimark,incfly,idan_frimark
+Access istio/k8s service via HTTPS - Security - Discuss Istio:elonsalfati
+Connectivity Verification from side car to istio pilot for mTLS enabled policy fails - Security - Discuss Istio:krimeshsh
+Authorizationpolicy issue with readiness, liveness probes throw 403 - Security - Discuss Istio:saifulla21,diemtvu,diemtvu,saifulla21
+How do the developers usually specify the end-user permissions? i.e., How do we know the permissions of an end-user? - Security - Discuss Istio:Xing_Li
+Istio mtls connection issues - Security - Discuss Istio:mbchristoff,mbchristoff,incfly,mbchristoff,mbchristoff
+Authorization policy is not working properly - Security - Discuss Istio:mamtha_jukur,mamtha_jukur,YangminZhu
+JWT authentication on specific method - Security - Discuss Istio:shaneqld,YangminZhu
+Istio and Kubernetes Network Policies - Security - Discuss Istio:obelisk,YangminZhu
+Istio Authentication with Internal Service - Security - Discuss Istio:Bastian_Ubilla
+Citadel rejects requests from mesh expansion node - Security - Discuss Istio:sfudeus,sfudeus,wenchenglu,sfudeus,incfly,sfudeus,Juan,peter-fe
+Securing Istio PKI - Security - Discuss Istio:omerlh,incfly,omerlh,spikecurtis,rumba
+Authentication Policy Origins JWT - Internal vs Public Access - Security - Discuss Istio:MarioPeck,YangminZhu
+How to tell pilot to fetch JWKS certs using mTLS? - Security - Discuss Istio:lhotrifork,denniseffing,incfly,lhotrifork
+TLS Tickets with multiple Ingress Gateway - Security - Discuss Istio:Paic,Oliver,Paic,Oliver,Paic,Paic
+Citadel Health Checking - Security - Discuss Istio:Shubham,JimmyChen,Shubham
+Restrict access from one service to another - Security - Discuss Istio:reistlin,spikecurtis,philliple,reistlin,diemtvu,philliple,hzxuzhonghu,reistlin,hzxuzhonghu,reistlin,Stepan
+AuthorizationPolicy and Namespaces - Security - Discuss Istio:Fredrik,Fredrik
+L7 protection (XSS, SQL injection) policies - Security - Discuss Istio:carlosaml,YangminZhu,carlosaml,YangminZhu,Shemer_Schwarz,wangdong,Nikhil_Kanotra,Nikhil_Kanotra
+Default Access Denied issue - Security - Discuss Istio:dadude
+Setting origin identity (e.g request.auth.user) from upstream proxy header value? - Security - Discuss Istio:discordianfish
+Mutual TLS over HTTPS on calls via the ingress gateway - is this possible? - Security - Discuss Istio:thedonald91,spikecurtis,thedonald91,spikecurtis,thedonald91,spikecurtis,thedonald91,torstenwerner
+Is it possible to examine the mtls certificate in istio 1.5 - Security - Discuss Istio:Ju5099x,leitang,howardjohn,Ju5099x,Ju5099x,howardjohn
+Order of execution of Istio Authentication Policy and Mixer-based authorization : Istio 1.3 - Security - Discuss Istio:ashi.k.singh
+Citadel support multiple replica or not? - Security - Discuss Istio:111,jwendell,voanhduy1512,111
+How to implement user authentication with Istio along with LDAP or other components? - Security - Discuss Istio:Meghana,incfly,Meghana,Meghana,snkshukla,Meghana,snkshukla
+Authservice fails to exchange authorization code for access token with keycloak - Security - Discuss Istio:snkshukla
+Question on Mixer support in Istio 1.5 and authorization policy - Security - Discuss Istio:shruthi.cn
+End user authentication using JWT throws 401 unauthorized for few attempts before being successful - Security - Discuss Istio:navrem,catman002
+Plugging in existing CA Certificates in istio1.5 - Security - Discuss Istio:shrishs,leitang,shrishs,leitang,shrishs,leitang,shrishs
+RequestAuthentication is not forwarding token - Security - Discuss Istio:shrishs,leitang,shrishs
+Authorization policy challenge - Security - Discuss Istio:TechTroop,Shubham,TechTroop,TechTroop,Shubham,TechTroop,liminwang
+Multiple Authenttication policies - Security - Discuss Istio:Rodrigo_Valladares,JimmyChen,YangminZhu
+Istio 1.5 JWT claim in AuthorizationPolicy - Security - Discuss Istio:binc75,Shubham,binc75,Shubham,liminwang,binc75,binc75,shrishs,YangminZhu
+Multicluster control options for gateway - Security - Discuss Istio:magic,leitang,YangminZhu
+Nested JWT claims validation - Security - Discuss Istio:Simone_Ripamonti,liminwang,Jon_Bergevin,brianroch
+Keyfactor New CA Provider Integration - Security - Discuss Istio:JDK,JimmyChen
+Get Istio CA in 1.5 - Security - Discuss Istio:tx19980520,Shubham,tx19980520,Shubham,tx19980520,JimmyChen
+Why css and png are not accessible? - Security - Discuss Istio:softshipper,JimmyChen
+Forward headers with EnvoyFilters - Security - Discuss Istio:salrashid123,Kamesh_Chauhan,salrashid123,JimmyChen
+Empty subject in x-forwarded-client-cert - Security - Discuss Istio:Kalyan_Kumar,Ralph_Bragg,Kalyan_Kumar,Ralph_Bragg,JimmyChen
+Security - Authorization Policy - 503 - Security - Discuss Istio:Kanthasamyraja,Shubham,Kanthasamyraja,Shubham,JimmyChen,Kanthasamyraja,Shubham
+Adding Envoy NETWORK_FILTER with Client TLS authentication - Security - Discuss Istio:IsharaPannila,JimmyChen,IsharaPannila
+Help with blacklist for jwt compromised - Security - Discuss Istio:berniegao,edude03,JimmyChen,YangminZhu
+503 error with requestPrincipals in AuthorizationPlicy (istio 1.5.2) - Security - Discuss Istio:sbolduc,leitang,liminwang,sbolduc,Shubham,sbolduc
+Actions required for external CA key/cert to take effect? - Security - Discuss Istio:jaid,111,jaid
+Routing seems broken when enabling mtls on namespace basis - Security - Discuss Istio:Doug_Drechsel,leitang,Doug_Drechsel
+Istio 1.5 - PeerAuthentication not reflected on istioctl authn tls-check and istioctl x describe - Security - Discuss Istio:jaishreedhage,liminwang,bethmage,111,111,bethmage
+Elasticsearch client fails to handshake with master - Security - Discuss Istio:prashanth,leitang,deepak_deore
+Mutual TLS with external CA Configuration - Security - Discuss Istio:hovonako,Shubham,incfly,Oliver,deepak_deore,111,gitirabassi
+Problems create lua filter - Security - Discuss Istio:Rodrigo_Valladares,leitang,Rodrigo_Valladares,111
+Failed to read cacert from credentialName in Gateway - Security - Discuss Istio:Aravind,Shubham,Aravind
+Envoy LUA filter, contact local container for external authorization - Security - Discuss Istio:mrestelli,spikecurtis,YangminZhu,mrestelli,YangminZhu,spikecurtis,YangminZhu,Quach90,mrestelli,mrestelli,Quach90,mrestelli,sergioteixeira,mrestelli,johnzheng1975,yaakov-berkovitch,mrestelli,Victor_Kamnev
+Upgrading mTLS root certificate - Security - Discuss Istio:Mike_Norgate
+[Question] Decode JWT and put "sub" into a request header - Security - Discuss Istio:Forrest_Dix,Oliver,davinkevin,klarose,liminwang,Tian_Wang,diemtvu,Bryan_Absher,theganyo,rob,jayasai470,jayasai470,rob,jayasai470,ademaria,Eduardo_Lago_Aguilar
+Istio not reporting spans when Jaeger is secured with mTLS - Security - Discuss Istio:prashanth
+Istio pod to pod mTLS - Security - Discuss Istio:Dinesh3467,William_Li,Dinesh3467,Sudharma
+Peer Authentication for workload without sidecar - Security - Discuss Istio:Aravind,William_Li,incfly,Aravind
+Gateways, mTLS, & certificate revocation - Security - Discuss Istio:dcovino,leitang,dcovino,deepak_deore,William_Li,deepak_deore
+mTLS + JWT authentication - Security - Discuss Istio:Nilamadhaba_Rath,YangminZhu
+Plugging in a new (ephemeral) CA certificate - Security - Discuss Istio:Phil_Harvey,ceposta,Phil_Harvey,deepak_deore,Zufar_Dhiyaulhaq,ceposta,JimmyChen,Phil_Harvey
+Matching permissions in Istio AuthorizationPolicy - Security - Discuss Istio:Maks_Usanin,YangminZhu
+Istio (1.6.2) : DENY policy in Authorization Policy does not work with Valid Token - Security - Discuss Istio:sweta581990,YangminZhu
+Istio + OAuth 2.0 - Security - Discuss Istio:natraj09,rafik8,Omar_Al-Hayderi,natraj09,rafik8,natraj09,rafik8,spikecurtis,rafik8,natraj09,hemeda2,juliabenatti,fai555
+503 errors with AuthorizationPolicy and ALLOW with a Rule - Security - Discuss Istio:lightphos,lightphos,linggg
+Access K8s Secrets from Istio - Security - Discuss Istio:lightphos
+mTLS Client Hello uses wrong SNI - Security - Discuss Istio:gnu300,rtmie
+Custom CA on istio 1.6.2 - Security - Discuss Istio:Wilson_Chuah,Wilson_Chuah,Zufar_Dhiyaulhaq,Wilson_Chuah,kutsav,deepak_deore
+Certificate manager - Security - Discuss Istio:palic,serrien
+Istio upgrade from 1.4.6 -> 1.5.0 throws istiod errors : remote error: tls: error decrypting message - Security - Discuss Istio:Kuber_Kaul,Kuber_Kaul,Juraj_Malecka,Clare_Chu,Kuber_Kaul,Clare_Chu,Joaquin_Philippi,laurentiuspurba
+Istio 1.6.3: ingressgateway error "Proto constraint validation failed" - Security - Discuss Istio:MirtoBusico,YangminZhu,MirtoBusico,MirtoBusico
+Istio 1.5 AuthorizationPolicy using JWT - Security - Discuss Istio:ajay1989,JimmyChen,YangminZhu,MediceTiago,YangminZhu
+Istio 1.6.5: Chiron generated cert doesn't include the custom dnsNames as SAN - Security - Discuss Istio:happy,YangminZhu
+RBAC Config deserialization code - Security - Discuss Istio:Luigi_Ferrettino,incfly
+Online Boutique Extensions - Security - Discuss Istio:Kevin_Dackow,incfly
+ISTIO_MUTUAL for gateway - Security - Discuss Istio:Aravind,Sabyasachi2k,Aravind,Sabyasachi2k,Aravind,Sabyasachi2k
+Istio 1.6.4: Authorisation policy ALLOW is denying - Security - Discuss Istio:Sudhamsh_Kandukuri,Shubham,Sudhamsh_Kandukuri,Shubham,Sudhamsh_Kandukuri,Shubham,Sudhamsh_Kandukuri,Sabyasachi2k,Sudhamsh_Kandukuri,Sabyasachi2k
+'Upgrading' from citadel to istiod (istio 1.4 to 1.5) - Security - Discuss Istio:michael
+Renew certificates - Security - Discuss Istio:palic,incfly,palic,adurai81,palic,manz
+Does Authorization Policy Conditions support object array value for request.auth.claims? - Security - Discuss Istio:andersonlin,Emily_Zhu
+Authorization Policy IP allow/deny not working on services different than ingress-gateway - Security - Discuss Istio:hleal18,incfly,hleal18,hleal18,incfly,hleal18
+How to secure against traffic interception by VirtualService "merging" - Security - Discuss Istio:funkypenguin,kamboyer,incfly,gertvdijk,funkypenguin
+Istio 1.4.10: Do not request client certificate on ingress - Security - Discuss Istio:Shane_Qld
+Envoy filter - per_filter_config - Security - Discuss Istio:mgwizdz,JimmyChen,lambdai,lambdai,mgwizdz,Victor_Kamnev,mgwizdz,Victor_Kamnev,Jimmy.Gao
+Principle of least privilege for external service access - Security - Discuss Istio:dmarkey,incfly,dmarkey,nschhina,dmarkey,nschhina,dmarkey,dmarkey,dmarkey,Sudharma,dmarkey
+TLS SDS/credentialName not working with Ingress Gateway - Security - Discuss Istio:Daniel_Watrous,Sam_Naser,Daniel_Watrous,Daniel_Watrous,Sam_Naser,Daniel_Watrous,Mike_Choi,Klention_Mali,raswinraaj
+Trust between meshes - Security - Discuss Istio:venkatk-25,JimmyChen,leitang,venkatk-25,brian-wolfe
+Istio 1.7 - Setup for JWT Auth - Security - Discuss Istio:meme,YangminZhu
+Reading identity of the source service - Security - Discuss Istio:jonas.h,YangminZhu
+Istio in Kubernetes: Oauth2 External Auth - Security - Discuss Istio:Joe_J,haggs,Joe_J,haggs,JimmyChen,YangminZhu,raghush,Joe_J
+Migrating Kiali from HTTP to HTTPS with istio 1.5.7 using istioctl - Security - Discuss Istio:ramsateesh,feitnomore
+Healthchecks and mTLS - Security - Discuss Istio:Just_Plain_Marvin
+Istio-proxy still send encrypted data to pods - Security - Discuss Istio:meirfi,William_Li
+JWT-ALB-AuthorizationPolicyIssue - Security - Discuss Istio:tojo,tojo,William_Li,William_Li
+Istio and Keycloak - Security - Discuss Istio:cpper,YangminZhu
+JWT claims made available? - Security - Discuss Istio:mlucas,YangminZhu
+Is DNS Interception available? - Security - Discuss Istio:tshort,tshort,YangminZhu
+Syntax suggestion: authorization policy behind a reverse proxy - Security - Discuss Istio:bruce,YangminZhu,bruce
+AuthorizationPolicy not Enforced - Security - Discuss Istio:lamchan,YangminZhu,lamchan
+Trouble using existing CA Certs - Security - Discuss Istio:Steve_Neuharth,deepak_deore,Steve_Neuharth,YangminZhu,Steve_Neuharth,Steve_Neuharth
+TLS handshake with custom CA using wildcard egress - Security - Discuss Istio:nadworny,YangminZhu,nadworny
+Authenticating peer service - Security - Discuss Istio:rittneje,shankgan,rittneje,shankgan,rittneje
+How to setup SSL cert using istio with AWS EKS - Security - Discuss Istio:Bairava_Surya,liminwang,anuksc,Bairava_Surya
+Terminating MTLS in ingressgateway - what about authorization? - Security - Discuss Istio:jesper,jesper,YangminZhu,jesper,YangminZhu
+Istio Ingress Gateway - https and path based routing - Security - Discuss Istio:Mohd_Aslam,nick_tetrate,Mohd_Aslam,nick_tetrate
+Minimum TLS version? - Security - Discuss Istio:tshort,incfly,framled,incfly,tshort,framled,framled,prabhu-mannu,tshort,prabhu-mannu,tshort,framled,prabhu-mannu,tshort,Elven-coder
+AuthorizationPolicy Issue - Security - Discuss Istio:Mohd_Aslam,YangminZhu,Mohd_Aslam,YangminZhu
+Grace period for token validation whenever the JWK changes - Security - Discuss Istio:sudhakar890,shankgan,sudhakar890,incfly
+Istio operator: pass ingress mTLS certs via files instead of secrets - Security - Discuss Istio:Sameer_Naik,Sameer_Naik,Sameer_Naik
+How to enable mTLS within mesh in AWS EKS? - Security - Discuss Istio:Jasmin,deepak_deore
+Use Istio for authorisation: how to redirect to login page and how to use JWT cookies - Security - Discuss Istio:jenny,jenny,leitang,YangminZhu,jenny,jenny
+Istio Ingress Gateway with GKE Ingress and Google Managed Certificates - Security - Discuss Istio:fai555,incfly,Pramod_Kumar,fai555,JordanW,Pramod_Kumar
+Istio AuthorizationPolicy based on claims - Security - Discuss Istio:chen,YangminZhu
+Internal auth with lua filter - Security - Discuss Istio:okorzhov
+Passing Authorization headers automatically (JWT) between microservices - Security - Discuss Istio:DeanG,leitang,YangminZhu,DeanG,Leandro_Rodrigues_de,DeanG,Leandro_Rodrigues_de
+API key based authorization - Security - Discuss Istio:sudhakar890,nick_tetrate
+Setting request headers with values from a JWT - Security - Discuss Istio:pert,liminwang,erSitzt,inaiat,Thet_Ko,mancini0,inaiat,chen,inaiat,chen,inaiat,Thet_Ko,chen
+End User Auth for external use and MTLS for internal service-service communication? - Security - Discuss Istio:rob,Tao_Li,rob,YangminZhu,rob,YangminZhu,rob,rjbez17,rob,YangminZhu,dwctua,rob,dwctua,paolodedo,chen,YangminZhu,chen,paolodedo
+Best way to turn off mTLS for NodePort - Security - Discuss Istio:seanleblanc
+mTLS PeerAuthentication: allowing specific sources/clients using AuthorizationPolicy? - Security - Discuss Istio:Smeedy,nick_tetrate,Smeedy
+Correct way to require a jwt to access a workload from ingress - Security - Discuss Istio:arei,Sam_Mellors,Sam_Mellors
+JWT without sub claim - Security - Discuss Istio:sudhakar890,jtrbs

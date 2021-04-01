@@ -9,9 +9,31 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import tensorflow_text as text
 from official.nlp import bert
+from transformers import BertTokenizer
 import official.nlp.bert.tokenization
 
 from model_mapping import name_to_handle
+
+# Can add/subtract to this if necessary
+stop_words = ["ourselves", "hers", "between", "yourself", "but", "again", "there", "about", "once", "during",
+              "out", "very", "having", "with", "they", "own", "an", "be", "some", "for", "do", "its", "yours",
+              "such", "into", "of", "most", "itself", "other", "off", "is", "s", "am", "or", "who", "as", "from",
+              "him", "each", "the", "themselves", "until", "below", "are", "we", "these", "your", "his", "through",
+              "don", "nor", "me", "were", "her", "more", "himself", "this", "down", "should", "our", "their",
+              "while", "above", "both", "up", "to", "ours", "had", "she", "all", "no", "when", "at", "any",
+              "before", "them", "same", "and", "been", "have", "in", "will", "on", "does", "yourselves", "then",
+              "that", "because", "what", "over", "why", "so", "can", "did", "not", "now", "under", "he", "you",
+              "herself", "has", "just", "where", "too", "only", "myself", "which", "those", "i", "after", "few",
+              "whom", "t", "being", "if", "theirs", "my", "against", "a", "by", "doing", "it", "how", "further",
+              "was", "here", "than"]
+
+# Istio specific terms to add to the tokenizer
+additional_tokens = ["istio", "jwt", "ca", "certs", "tls", "https", "privatekey", "metadata", "api", "http",
+                     "namespace", "kubernetes", "ingress", "io", "mtls", "spec", "config", "sidecar", "envoy",
+                     "admin", "exp", "iat", "iss", "ssl", "dev", "prod", "ubuntu", "linux", "unix", "dns", "egress",
+                     "calico", "proxy", "nginx", "ip", "tcp", "udp", "cpu", "gpu", "ver", "svc", "smb", "init",
+                     "crl", "grpc"]
+
 
 def get_data(path_to_file, model_name, batch_size, train_count, validate_count, test_count):
     all_texts = []
@@ -28,11 +50,11 @@ def get_data(path_to_file, model_name, batch_size, train_count, validate_count, 
                 first_line = False
             else:
                 if row[1] == '0' and row[7] in data_labels:  # Valid data
-                    all_texts.append(row[6])
+                    all_texts.append(row[6] + ' ' + row[9])
                     all_labels.append(label_to_int[row[7]])
     np_all_labels = np.array(all_labels)
 
-    # print('\n\n\n', all_texts[0])
+    # print('\n\n\n', all_texts[17])
     # print('\n\n\n', all_texts[1])
 
     # Remove punctuation and other special characters
@@ -44,18 +66,37 @@ def get_data(path_to_file, model_name, batch_size, train_count, validate_count, 
         text = re.sub(r'\s+', ' ', text)
         edited_texts.append(text)
 
-    # print('\n\n\n', edited_texts[0])
+    # print('\n\n\n', edited_texts[17])
     # print('\n\n\n', edited_texts[1], '\n\n\n')
 
     # Tokenize
     tfhub_handle_encoder = name_to_handle(model_name)
     bert_layer = hub.KerasLayer(tfhub_handle_encoder, trainable=False)
     vocab_file = bert_layer.resolved_object.vocab_file.asset_path.numpy()
-    tokenizer = bert.tokenization.FullTokenizer(vocab_file=vocab_file, do_lower_case=True)
+    # tokenizer = bert.tokenization.FullTokenizer(vocab_file=vocab_file, do_lower_case=True)
+    tokenizer = BertTokenizer(vocab_file=vocab_file, do_lower_case=True)
+    tokenizer.add_tokens(additional_tokens)
     tokenized_texts = []
     for comment in edited_texts:
-        tokenized_texts.append(tokenizer.convert_tokens_to_ids(tokenizer.tokenize(comment)))
+        tokenized_texts.append(tokenizer.tokenize(comment))
 
+    # print('\n\n\n', tokenized_texts[17])
+    # Remove stop words
+    edited_texts.clear()
+    for words in tokenized_texts:
+        words_to_keep = []
+        for word in words:
+            if word not in stop_words:
+                words_to_keep.append(word)
+        edited_texts.append(words_to_keep)
+
+    # print('\n\n\n', edited_texts[17])
+    # Convert to token ids
+    tokenized_texts.clear()
+    for set_of_words in edited_texts:
+        tokenized_texts.append(tokenizer.convert_tokens_to_ids(set_of_words))
+
+    # print('\n\n\n', tokenized_texts[17])
     dataset = [[text, np_all_labels[i], len(text)] for i, text in enumerate(tokenized_texts)]
     dataset.sort(key=lambda x: x[2])
     final_dataset = [(data_instance[0], data_instance[1]) for data_instance in dataset]
@@ -80,6 +121,6 @@ def get_data(path_to_file, model_name, batch_size, train_count, validate_count, 
     # print(next(iter(validation_ds)))
     # print(next(iter(testing_ds)))
 
-    return training_ds, validation_ds, testing_ds, len(tokenizer.vocab)
+    return training_ds, validation_ds, testing_ds, len(tokenizer)
 
 # get_data("post_fixed.csv", 'small_bert/bert_en_uncased_L-12_H-768_A-12', 32, 70, 10, 20)
