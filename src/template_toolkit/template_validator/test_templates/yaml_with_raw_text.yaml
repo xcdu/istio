@@ -1,0 +1,29 @@
+4,0,Istio AuthorizationPolicy based on claims,Security,"Hi I’m trying to configure AuthorizationPolicy to allow specific Endpoint only for specific role.
+the thing is ,seems like im having issue with nested claims of my Auth0 token. when using Istio sample token i can do something like the following: it does works cause request.auth.claims includes the roles claim and the decrypted token looks like this: when debugging the Envoy Log for my Auth0 token i see that the roles in my case are not part of istio_authn request.auth.claims. i see them on request.auth.raw_claims which is not supported field for this policy. i see based on this  https://github.com/istio/istio/pull/28294  it is supported now to use nested claims, but i’m not quite sure why i do not see it as part of this field. i’ve also tried to enrich the sample token and when added it nested claim like this: and using the following policy: its not working. i’ve also tries to play with the  experimental.envoy.filters.*  flag with no luck.
+  why not all claims are part of the request.auth.claims? 10x
+CL","apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: admin-api
+  namespace: default
+spec:
+  action: DENY
+  selector:
+    matchLabels:
+      app: app1
+  rules:
+    - to:
+        - operation:
+            methods: [""GET""]
+            paths: [""/admin-api""]
+      when:
+        - key: request.auth.claims[roles]
+          notValues: [""admin""]
+  {
+    ""exp"": 1606396674,
+    ""groups"": ""company1"",
+    ""iat"": 1606393074,
+    ""iss"": ""testing@secure.istio.io"",
+    ""roles"": ""admin"",
+    ""sub"": ""testing@secure.istio.io""
+  }

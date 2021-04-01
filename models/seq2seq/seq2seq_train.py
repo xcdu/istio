@@ -49,6 +49,8 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
+model.summary()
+c = input()
 model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           batch_size=batch_size,
           epochs=epochs,
@@ -107,6 +109,8 @@ def decode_sequence(input_seq):
         sampled_token_index = np.argmax(output_tokens[0, -1, :])
         sampled_char = reverse_target_char_index[sampled_token_index]
         decoded_sentence += sampled_char
+
+        print(decoded_sentence)
 
         # Exit condition: either hit max length
         # or find stop character.

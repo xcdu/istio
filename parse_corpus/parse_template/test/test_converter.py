@@ -48,6 +48,7 @@ def test_convert_between_yaml_and_csv():
         prefixed_template = convert_from_yaml_to_prefixed(yaml_template)
         dataframe_template = convert_from_prefixed_to_dataframe(prefixed_template)
         csv_template = convert_from_dataframe_to_json(dataframe_template)
+        print(csv_template)
         recovered_dataframe_template = convert_from_json_to_dataframe(csv_template)
         recovered_prefixed_template = convert_from_dataframe_to_prefixed(recovered_dataframe_template)
         recovered_yaml_template = convert_from_prefixed_to_yaml(recovered_prefixed_template)

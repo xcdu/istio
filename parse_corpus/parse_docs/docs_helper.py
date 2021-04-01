@@ -23,6 +23,13 @@ def load_pages_from_dir(dir_path=RAW_ISTIO_DIR):
     return page_list
 
 
+def save_terms(manual: IstioManual, dir_path=PARSED_DOCS_DIR, filename="terms.txt"):
+    save_path = os.path.join(dir_path, filename)
+    with codecs.open(save_path, "w", encoding="utf-8") as save_file:
+        for term in manual.terms:
+            save_file.write(term + "\n")
+
+
 def save_manual(manual: IstioManual, dir_path=PARSED_DOCS_DIR, filename="manual.json"):
     save_path = os.path.join(dir_path, filename)
     with codecs.open(save_path, "w", encoding="utf-8") as save_file:
