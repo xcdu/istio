@@ -3,7 +3,7 @@
 import os
 import pandas as pd
 from default_config import RAW_FORUM_DIR
-from src.prepare_data.forum.forum_helper_config import FORUM_INDEX_REMAPPING
+from istrec.prepare_data.forum.forum_helper_config import FORUM_INDEX_REMAPPING
 
 
 def load_forum_corpus_from_dir(dir_path=RAW_FORUM_DIR, file_name="raw_forum.csv") -> pd.DataFrame:
