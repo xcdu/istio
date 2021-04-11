@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from parse_corpus.parse_docs.docs_helper import load_manual
-from parse_corpus.parse_template.template_parser import IstioTemplateFuzzyParser
+from prepare_data.template.template_parser import IstioTemplateFuzzyParser
 import yaml
 
 

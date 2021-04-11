@@ -5,10 +5,10 @@ import json
 import numpy as np
 import pandas as pd
 import yaml
-from parse_corpus.parse_template.template_parser import IstioTemplateFuzzyParser
-from parse_corpus.parse_template.template_converter import convert_from_yaml_to_prefixed
-from parse_corpus.parse_template.template_converter import convert_from_prefixed_to_dataframe
-from parse_corpus.parse_template.template_converter import convert_from_dataframe_to_json
+from prepare_data.template.template_parser import IstioTemplateFuzzyParser
+from prepare_data.template.template_converter import convert_from_yaml_to_prefixed
+from prepare_data.template.template_converter import convert_from_prefixed_to_dataframe
+from prepare_data.template.template_converter import convert_from_dataframe_to_json
 from components.nlp_preprocess.feature import SpacyFeature
 from components.nlp_preprocess.feature import BertFeature
 from components.nlp_preprocess.preprocessor import PipelinePreprocessor

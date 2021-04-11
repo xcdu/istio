@@ -1,4 +1,5 @@
 # Istio Template Recommendation Project
+![Istio](https://img.shields.io/badge/Python-3.7.9-blue)
 
 ## Installation
 
